@@ -36,5 +36,11 @@ namespace RPGEnigma.Utils
             } while (!char.TryParse(Console.ReadLine(), out letter));
             return letter;
         }
+
+        static string AskPlayerReturnString(string question)
+        {
+            Console.WriteLine(question);
+            return Console.ReadLine();
+        }
     }
 }
