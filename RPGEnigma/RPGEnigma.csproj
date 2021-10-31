@@ -7,8 +7,10 @@
 
   <ItemGroup>
     <None Remove="Utils\" />
+    <None Remove="Character\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
+    <Folder Include="Character\" />
   </ItemGroup>
 </Project>

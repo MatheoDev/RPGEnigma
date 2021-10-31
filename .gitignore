@@ -11,6 +11,9 @@ autom4te.cache/
 tarballs/
 test-results/
 
+#volumes docker ignore
+dbdata/
+
 # Mac bundle stuff
 *.dmg
 *.app
