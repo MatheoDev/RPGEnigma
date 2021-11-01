@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using RPGEnigma.Menu;
+using RPGEnigma.Place;
 
 namespace RPGEnigma
 {
@@ -6,7 +9,11 @@ namespace RPGEnigma
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            List<IMenuItem> places = new List<IMenuItem>();
+            places.Add(new ShopCtrl());
+            places.Add(new TavernCtrl());
+
+            new MenuCtrl(places);
         }
     }
 }

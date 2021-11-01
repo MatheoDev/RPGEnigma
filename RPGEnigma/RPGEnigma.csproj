@@ -8,9 +8,13 @@
   <ItemGroup>
     <None Remove="Utils\" />
     <None Remove="Character\" />
+    <None Remove="Menu\" />
+    <None Remove="Place\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
     <Folder Include="Character\" />
+    <Folder Include="Menu\" />
+    <Folder Include="Place\" />
   </ItemGroup>
 </Project>

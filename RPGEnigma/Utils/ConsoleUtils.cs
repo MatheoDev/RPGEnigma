@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using RPGEnigma.Menu;
 
 namespace RPGEnigma.Utils
 {
@@ -9,25 +10,25 @@ namespace RPGEnigma.Utils
         {
         }
 
-        static void WriteMenuConsole(List<string> show)
+        public static void WriteMenuConsole(List<IMenuItem> show)
         {
             for (int i = 0; i < show.Count; i++)
             {
-                Console.WriteLine("{0} : {1}",i , show[i]);
+                Console.WriteLine("{0} : {1}",i , show[i].name);
             }
         }
 
-        static int AskPlayerReturnInt(string question)
+        public static int AskPlayerReturnInt(string question, int min = int.MinValue, int max = int.MaxValue)
         {
             int number;
             do
             {
                 Console.WriteLine(question);
-            } while (!int.TryParse(Console.ReadLine(), out number));
+            } while (!int.TryParse(Console.ReadLine(), out number) || number < min || number > max);
             return number;
         }
 
-        static char AskPlayerReturnChar(string question)
+        public static char AskPlayerReturnChar(string question)
         {
             char letter;
             do
@@ -37,7 +38,7 @@ namespace RPGEnigma.Utils
             return letter;
         }
 
-        static string AskPlayerReturnString(string question)
+        public static string AskPlayerReturnString(string question)
         {
             Console.WriteLine(question);
             return Console.ReadLine();
