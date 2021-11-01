@@ -17,7 +17,7 @@ namespace RPGEnigma.Place
 
         public void InitItem()
         {
-
+            Console.WriteLine("SHOP");
         }
     }
 }

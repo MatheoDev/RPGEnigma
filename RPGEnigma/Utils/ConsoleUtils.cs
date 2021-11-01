@@ -16,6 +16,7 @@ namespace RPGEnigma.Utils
             {
                 Console.WriteLine("{0} : {1}",i , show[i].name);
             }
+            Console.WriteLine("");
         }
 
         public static int AskPlayerReturnInt(string question, int min = int.MinValue, int max = int.MaxValue)
@@ -24,7 +25,7 @@ namespace RPGEnigma.Utils
             do
             {
                 Console.WriteLine(question);
-            } while (!int.TryParse(Console.ReadLine(), out number) || number < min || number > max);
+            } while (!int.TryParse(Console.ReadLine(), out number) || number < min || number > max-1);
             return number;
         }
 

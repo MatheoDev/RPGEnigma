@@ -12,6 +12,13 @@ namespace RPGEnigma.Menu
         {
             _places = places;
             ConsoleUtils.WriteMenuConsole(_places);
+            ChooseMenuItemAction();
+        }
+
+        public void ChooseMenuItemAction()
+        {
+            int step = ConsoleUtils.AskPlayerReturnInt("Où voulez vous aller ?", 0, _places.Count);
+            _places[step].InitItem();
         }
     }
 }
