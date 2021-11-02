@@ -10,10 +10,14 @@ namespace RPGEnigma.Menu
 
         public static IMenuItem _shop = new ShopCtrl();
 
+        public static IMenuItem _adventure = new AdventureCtrl();
+
         public static IMenuItem _shopSell = new ShopSellCtrl();
 
         public static IMenuItem _shopBuy = new ShopBuyCtrl();
 
         public static IMenuItem _tavern = new TavernCtrl();
+
+        public static IMenuItem _townHall = new TownhallCtrl();
     }
 }

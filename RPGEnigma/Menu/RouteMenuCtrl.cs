@@ -13,8 +13,10 @@ namespace RPGEnigma.Menu
         {
             List<IMenuItem> menu = new List<IMenuItem>();
 
+            menu.Add(RouteCtrl._adventure);
             menu.Add(RouteCtrl._shop);
             menu.Add(RouteCtrl._tavern);
+            menu.Add(RouteCtrl._townHall);
 
             return new MenuCtrl(menu);
         }

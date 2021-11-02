@@ -7,7 +7,7 @@ namespace RPGEnigma.Place
     {
         public TavernCtrl()
         {
-            name = "TAVERN";
+            name = "TAVERNE";
         }
 
         public string name
@@ -18,7 +18,7 @@ namespace RPGEnigma.Place
         public void InitItem()
         {
             Console.Clear();
-            Console.WriteLine("TAVERN");
+            Console.WriteLine("--- TAVERN ---");
         }
     }
 }
