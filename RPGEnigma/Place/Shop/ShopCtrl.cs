@@ -11,8 +11,6 @@ namespace RPGEnigma.Place.Shop
         public ShopCtrl()
         {
             name = "SHOP";
-            _options.Add(new ShopBuyCtrl());
-            _options.Add(new ShopSellCtrl());
         }
 
         public string name
@@ -24,7 +22,7 @@ namespace RPGEnigma.Place.Shop
         {
             Console.Clear();
             Console.WriteLine("--- SHOP ---");
-            new MenuCtrl(_options, "Que voulez vous faire ?");
+            RouteMenuCtrl._shopMenu.BuildMenu();
         }
     }
 }

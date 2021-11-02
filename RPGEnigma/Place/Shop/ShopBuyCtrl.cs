@@ -16,7 +16,6 @@ namespace RPGEnigma.Place.Shop
         {
             Console.Clear();
             Console.WriteLine("--- ACHAT ---");
-
         }
     }
 }
