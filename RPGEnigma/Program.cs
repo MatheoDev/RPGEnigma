@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using RPGEnigma.Menu;
+using RPGEnigma.Place.Shop;
 using RPGEnigma.Place;
 
 namespace RPGEnigma

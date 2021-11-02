@@ -8,16 +8,16 @@ namespace RPGEnigma.Menu
     {
         private List<IMenuItem> _places;
 
-        public MenuCtrl(List<IMenuItem> places)
+        public MenuCtrl(List<IMenuItem> places, string question = "Où voulez vous aller ?")
         {
             _places = places;
             ConsoleUtils.WriteMenuConsole(_places);
-            ChooseMenuItemAction();
+            ChooseMenuItemAction(question);
         }
 
-        public void ChooseMenuItemAction()
+        public void ChooseMenuItemAction(string question)
         {
-            int step = ConsoleUtils.AskPlayerReturnInt("Où voulez vous aller ?", 0, _places.Count);
+            int step = ConsoleUtils.AskPlayerReturnInt(question, 0, _places.Count);
             _places[step].InitItem();
         }
     }

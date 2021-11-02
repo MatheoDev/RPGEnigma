@@ -17,6 +17,7 @@ namespace RPGEnigma.Place
 
         public void InitItem()
         {
+            Console.Clear();
             Console.WriteLine("TAVERN");
         }
     }
