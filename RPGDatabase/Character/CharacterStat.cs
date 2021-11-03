@@ -1,5 +1,5 @@
 ﻿using System;
-namespace RPGEnigma.Character
+namespace RPGDatabase.Character
 {
     public class CharacterStat
     {

@@ -1,22 +1,34 @@
 ﻿using System;
-namespace RPGEnigma.Character
+namespace RPGDatabase.Character
 {
     public class CharacterCtrl
     {
-        protected CharacterStat _stats;
+        private string name;
 
-        protected int _level;
+        private CharacterStat stats;
 
-        protected int _experienceLvl;
+        private int level;
 
-        protected int _money;
+        private int experienceLvl;
+
+        private int money;
+
+        public string Name { get => name; set => name = value; }
+
+        public CharacterStat Stats { get => stats; set => stats = value; }
+
+        public int Level { get => level; set => level = value; }
+
+        public int ExperienceLvl { get => experienceLvl; set => experienceLvl = value; }
+
+        public int Money { get => money; set => money = value; }
 
         public CharacterCtrl(CharacterStat stats)
         {
-            _stats = stats;
-            _level = 0;
-            _experienceLvl = 0;
-            _money = 0;
+            Stats = stats;
+            Level = 0;
+            ExperienceLvl = 0;
+            Money = 0;
         }
     }
 }
