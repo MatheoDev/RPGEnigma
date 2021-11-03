@@ -6,7 +6,9 @@ namespace RPGEnigma.Menu
 {
     public class MenuCtrl
     {
-        private List<IMenuItem> _places;
+        private List<IMenuItem> _places = new List<IMenuItem>();
+
+        private List<string> _options = new List<string>();
 
         private string _question;
 
@@ -14,7 +16,21 @@ namespace RPGEnigma.Menu
         {
             _places = places;
             _question = question;
+        }
 
+        public MenuCtrl(List<string> places, string question = "Où voulez vous aller ?")
+        {
+            _options = places;
+            _question = question;
+        }
+
+        public bool DefineIsListIMenuItem()
+        {
+            if (_places.Count > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void ChooseMenuItemAction(string question)
@@ -25,8 +41,14 @@ namespace RPGEnigma.Menu
 
         public void BuildMenu()
         {
-            ConsoleUtils.WriteMenuConsole(_places);
-            ChooseMenuItemAction(_question);
+            if (DefineIsListIMenuItem())
+            {
+                ConsoleUtils.WriteMenuConsole(_places);
+                ChooseMenuItemAction(_question);
+            } else
+            {
+                ConsoleUtils.WriteMenuConsole(_options);
+            }
         }
     }
 }

@@ -7,11 +7,16 @@
   <ItemGroup>
     <None Remove="Character\" />
     <None Remove="MySql.Data" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="MySql.Data.EntityFrameworkCore" />
+    <None Remove="MySql.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Character\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.27" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.8" />
   </ItemGroup>
 </Project>

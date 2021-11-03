@@ -19,6 +19,15 @@ namespace RPGEnigma.Utils
             Console.WriteLine("");
         }
 
+        public static void WriteMenuConsole(List<string> show)
+        {
+            for (int i = 0; i < show.Count; i++)
+            {
+                Console.WriteLine("{0} : {1}", i, show[i]);
+            }
+            Console.WriteLine("");
+        }
+
         public static int AskPlayerReturnInt(string question, int min = int.MinValue, int max = int.MaxValue)
         {
             int number;
