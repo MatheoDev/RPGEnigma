@@ -9,6 +9,8 @@ services:
       MYSQL_DATABASE: rpg_enigma
       MYSQL_USER: matheo
       MYSQL_PASSWORD: matheopass
+    ports:
+      - 3308:3306
     volumes:
       - ${PWD}/dbdata:/var/lib/mysql
 

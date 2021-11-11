@@ -1,5 +1,4 @@
 ﻿using System;
-using RPGDatabase.Character;
 using RPGEnigma.Menu;
 
 namespace RPGEnigma
