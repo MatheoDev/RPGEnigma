@@ -4,6 +4,11 @@ using RPGEnigma.Menu;
 
 namespace RPGEnigma.Utils
 {
+    /**
+     * Classe ConsoleUtils
+     * Permet de faire toute action sur la console
+     * Demander une info ou afficher une info
+     */
     public class ConsoleUtils
     {
         public ConsoleUtils()

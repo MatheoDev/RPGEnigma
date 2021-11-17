@@ -8,8 +8,8 @@ namespace RPGEnigma
     {
         static void Main(string[] args)
         {
-            RouteCtrl._home.InitItem();
-            //new HomeMenuCtrl();
+            //RouteCtrl._home.InitItem();
+            new HomeMenuCtrl();
         }
     }
 }

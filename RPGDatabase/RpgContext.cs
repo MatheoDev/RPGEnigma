@@ -5,6 +5,11 @@ using RPGDatabase.Models.GamePart;
 
 namespace RPGDatabase
 {
+    /**
+     * Classe RpgContext qui extend de DbContext
+     * Permet de paramétrer la connexion à la BDD 
+     * Puis de définir les fonctions d'accès et d'ajout à la BDD
+     */
     public class RpgContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

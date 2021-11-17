@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace RPGEnigma.Menu
 {
+    /**
+     * Classe static RouteMenuCtrl
+     * Permet d'utiliser le meme menu partout dans l'app
+     * quand cela est nécessaire, évite les prbl de ref
+     */
     public static class RouteMenuCtrl
     {
         public static MenuCtrl _homeMenu = buildHomeMenu();
