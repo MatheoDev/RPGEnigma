@@ -10,12 +10,16 @@
     <None Remove="Menu\" />
     <None Remove="Place\" />
     <None Remove="Place\Shop\" />
+    <None Remove="Menu\Principal\" />
+    <None Remove="Service\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
     <Folder Include="Menu\" />
     <Folder Include="Place\" />
     <Folder Include="Place\Shop\" />
+    <Folder Include="Menu\Principal\" />
+    <Folder Include="Service\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RPGDatabase\RPGDatabase.csproj" />

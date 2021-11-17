@@ -1,5 +1,6 @@
 ﻿using System;
 using RPGEnigma.Menu;
+using RPGEnigma.Menu.Principal;
 
 namespace RPGEnigma
 {
@@ -8,6 +9,7 @@ namespace RPGEnigma
         static void Main(string[] args)
         {
             RouteCtrl._home.InitItem();
+            //new HomeMenuCtrl();
         }
     }
 }

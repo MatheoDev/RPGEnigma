@@ -15,10 +15,12 @@
     <None Remove="Microsoft.EntityFrameworkCore.Design" />
     <None Remove="NuGet.CommandLine" />
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
+    <None Remove="Models\GamePart\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Models\Character\" />
+    <Folder Include="Models\GamePart\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.2" />
