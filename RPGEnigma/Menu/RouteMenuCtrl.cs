@@ -22,6 +22,7 @@ namespace RPGEnigma.Menu
             menu.Add(RouteCtrl._shop);
             menu.Add(RouteCtrl._tavern);
             menu.Add(RouteCtrl._townHall);
+            menu.Add(RouteCtrl._menuPrincipal);
 
             return new MenuCtrl(menu);
         }

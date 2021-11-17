@@ -9,8 +9,8 @@ using RPGDatabase;
 namespace RPGDatabase.Migrations
 {
     [DbContext(typeof(RpgContext))]
-    [Migration("20211103165044_initial")]
-    partial class initial
+    [Migration("20211117184937_initial2")]
+    partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,25 @@ namespace RPGDatabase.Migrations
                     b.ToTable("HeroSet");
                 });
 
+            modelBuilder.Entity("RPGDatabase.Models.GamePart.Party", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HeroId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HeroId");
+
+                    b.ToTable("PartySet");
+                });
+
             modelBuilder.Entity("RPGDatabase.Models.Character.Hero", b =>
                 {
                     b.HasOne("RPGDatabase.Models.Character.CharacterStat", "Stats")
@@ -77,6 +96,15 @@ namespace RPGDatabase.Migrations
                         .HasForeignKey("StatsId");
 
                     b.Navigation("Stats");
+                });
+
+            modelBuilder.Entity("RPGDatabase.Models.GamePart.Party", b =>
+                {
+                    b.HasOne("RPGDatabase.Models.Character.Hero", "Hero")
+                        .WithMany()
+                        .HasForeignKey("HeroId");
+
+                    b.Navigation("Hero");
                 });
 #pragma warning restore 612, 618
         }

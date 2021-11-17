@@ -12,6 +12,8 @@
     <None Remove="Place\Shop\" />
     <None Remove="Menu\Principal\" />
     <None Remove="Service\" />
+    <None Remove="Game\" />
+    <None Remove="Game\Creation\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
@@ -20,6 +22,8 @@
     <Folder Include="Place\Shop\" />
     <Folder Include="Menu\Principal\" />
     <Folder Include="Service\" />
+    <Folder Include="Game\" />
+    <Folder Include="Game\Creation\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RPGDatabase\RPGDatabase.csproj" />

@@ -74,15 +74,15 @@ namespace RPGDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("HeroId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("heroId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("heroId");
+                    b.HasIndex("HeroId");
 
                     b.ToTable("PartySet");
                 });
@@ -98,11 +98,11 @@ namespace RPGDatabase.Migrations
 
             modelBuilder.Entity("RPGDatabase.Models.GamePart.Party", b =>
                 {
-                    b.HasOne("RPGDatabase.Models.Character.Hero", "hero")
+                    b.HasOne("RPGDatabase.Models.Character.Hero", "Hero")
                         .WithMany()
-                        .HasForeignKey("heroId");
+                        .HasForeignKey("HeroId");
 
-                    b.Navigation("hero");
+                    b.Navigation("Hero");
                 });
 #pragma warning restore 612, 618
         }

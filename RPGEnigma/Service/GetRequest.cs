@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using RPGDatabase;
+using RPGDatabase.Models.Character;
 using RPGDatabase.Models.GamePart;
 
 namespace RPGEnigma.Service
@@ -26,6 +28,15 @@ namespace RPGEnigma.Service
                 }
             }
             return listParty;
+        }
+
+        public static void SetParty(string nameHero)
+        {
+            using (RpgContext rpgContext = new RpgContext())
+            {
+                rpgContext.PartySet.Add(new Party(nameHero, new Hero(nameHero)));
+                rpgContext.SaveChanges();
+            }
         }
     }
 }

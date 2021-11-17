@@ -1,4 +1,5 @@
 ﻿using System;
+using RPGEnigma.Menu.Principal;
 using RPGEnigma.Place;
 using RPGEnigma.Place.Shop;
 
@@ -11,6 +12,8 @@ namespace RPGEnigma.Menu
      */
     public static class RouteCtrl
     {
+        public static IMenuItem _menuPrincipal = new HomeMenuCtrl();
+
         public static IMenuItem _home = new HomeCtrl();
 
         public static IMenuItem _shop = new ShopCtrl();

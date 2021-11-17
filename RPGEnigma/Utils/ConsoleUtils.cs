@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using RPGDatabase.Models.GamePart;
 using RPGEnigma.Menu;
 
 namespace RPGEnigma.Utils
@@ -29,6 +30,15 @@ namespace RPGEnigma.Utils
             for (int i = 0; i < show.Count; i++)
             {
                 Console.WriteLine("{0} : {1}", i, show[i]);
+            }
+            Console.WriteLine("");
+        }
+
+        public static void WriteMenuConsole(List<Party> show)
+        {
+            for (int i = 0; i < show.Count; i++)
+            {
+                Console.WriteLine("{0} : {1}", i, show[i].Name);
             }
             Console.WriteLine("");
         }

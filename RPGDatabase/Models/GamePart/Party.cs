@@ -9,10 +9,16 @@ namespace RPGDatabase.Models.GamePart
 
         public string Name { get; set; }
 
-        public Hero hero { get; set; }
+        public Hero Hero { get; set; }
 
         public Party()
         {
+        }
+
+        public Party(string name, Hero hero)
+        {
+            Name = name;
+            Hero = hero;
         }
     }
 }
