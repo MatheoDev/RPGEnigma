@@ -14,9 +14,11 @@ namespace RPGEnigma.Menu.Principal
 
         private GameHome _currentGame;
 
+        private CreationGameCtrl _creationGame;
+
         public HomeMenuCtrl()
         {
-            name = "Menu Principal";
+            name = "MENU PRINCIPAL";
         }
 
         public string name { get; set; }
@@ -24,25 +26,47 @@ namespace RPGEnigma.Menu.Principal
         public void InitItem()
         {
             _parties = GetRequest.GetParty();
+            Console.Clear();
+            Console.WriteLine("--- MENU PRINCIPAL ---");
             ManageMenu();
         }
 
-        public bool CheckNumberOfParty()
+        private bool CheckNumberOfParty()
         {
             return _parties.Count != 0 ? true : false;
         }
 
-        public void ManageMenu()
+        private void MakeSomething(int numberParty)
+        {
+            if (numberParty == _parties.Count)
+            {
+                _creationGame = new CreationGameCtrl();
+            }
+            else
+            {
+                _currentGame = new GameHome(_parties[numberParty]);
+            }
+        }
+
+        private void ManageMenu()
         {
             if (CheckNumberOfParty())
             {
+                int numberParty = 0;
                 ConsoleUtils.WriteMenuConsole(_parties);
-                int numberParty = ConsoleUtils.AskPlayerReturnInt("Choisir une partie :", 0, _parties.Count);
-                _currentGame = new GameHome(_parties[numberParty]);
+                if (_parties.Count < 3)
+                {
+                    Console.WriteLine("{0} : Créez une nouvelle partie \n", _parties.Count);
+                    numberParty = ConsoleUtils.AskPlayerReturnInt("Choisir une partie :", 0, _parties.Count+1);
+                } else
+                {
+                    numberParty = ConsoleUtils.AskPlayerReturnInt("Choisir une partie :", 0, _parties.Count);
+                }
+                MakeSomething(numberParty);
             } else
             {
-                Console.WriteLine("Créez une partie");
-                new CreationGameCtrl();
+                Console.WriteLine("Créez une partie !");
+                _creationGame = new CreationGameCtrl();
             }
         }
     }

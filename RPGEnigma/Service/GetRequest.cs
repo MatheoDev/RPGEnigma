@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using RPGDatabase;
 using RPGDatabase.Models.Character;
 using RPGDatabase.Models.GamePart;
@@ -22,7 +23,7 @@ namespace RPGEnigma.Service
             List<Party> listParty = new List<Party>();
             using (RpgContext rpgContext = new RpgContext())
             {
-                foreach (Party party in rpgContext.PartySet)
+                foreach (Party party in rpgContext.PartySet.Include("Hero.Stats"))
                 {
                     listParty.Add(party);
                 }
@@ -30,7 +31,7 @@ namespace RPGEnigma.Service
             return listParty;
         }
 
-        public static void SetParty(string nameHero)
+        public static void SetPartyHero(string nameHero)
         {
             using (RpgContext rpgContext = new RpgContext())
             {

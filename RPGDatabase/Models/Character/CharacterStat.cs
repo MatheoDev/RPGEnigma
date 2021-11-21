@@ -13,12 +13,12 @@ namespace RPGDatabase.Models.Character
 
         public int Discretion { get; set; }
 
-        public CharacterStat(int power, int dexterity, int intelligence, int discretion)
+        public CharacterStat()
         {
-            Power = power;
-            Dexterity = dexterity;
-            Intelligence = intelligence;
-            Discretion = discretion;
+            Power = 0;
+            Dexterity = 0;
+            Intelligence = 0;
+            Discretion = 0;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace RPGEnigma.Game.Creation
 
         public void CreatePartAndHero(string nameHero)
         {
-            GetRequest.SetParty(nameHero);
+            GetRequest.SetPartyHero(nameHero);
             RouteCtrl._menuPrincipal.InitItem();
         }
     }

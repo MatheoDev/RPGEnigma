@@ -25,14 +25,7 @@ namespace RPGDatabase.Models.Character
             Level = 0;
             ExperienceLvl = 0;
             Money = 10;
-        }
-
-        public CharacterCtrl(CharacterStat stats)
-        {
-            Stats = stats;
-            Level = 0;
-            ExperienceLvl = 0;
-            Money = 0;
+            Stats = new CharacterStat();
         }
     }
 }

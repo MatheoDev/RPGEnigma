@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using RPGEnigma.Game;
 using RPGEnigma.Menu;
 using RPGEnigma.Place.Shop;
 
@@ -16,10 +17,16 @@ namespace RPGEnigma.Place
 
         public string name { get; set; }
 
+        private void BuildWelcoming()
+        {
+            Console.WriteLine("{0} vous revoilà, prêt pour partir de nouveau à l'aventure ? \n", GameHome.Party.Hero.Name);
+        }
+
         public void InitItem()
         {
             Console.Clear();
             Console.WriteLine("--- HOME ---");
+            BuildWelcoming();
             RouteMenuCtrl._homeMenu.BuildMenu();
         }
     }

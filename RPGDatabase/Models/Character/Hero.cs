@@ -11,9 +11,5 @@ namespace RPGDatabase.Models.Character
         public Hero(string name) : base(name)
         {
         }
-
-        public Hero(CharacterStat stats) : base(stats)
-        {
-        }
     }
 }

@@ -6,11 +6,11 @@ namespace RPGEnigma.Game
 {
     public class GameHome
     {
-        public Party _party { get; set; }
+        public static Party Party { get; set; }
 
         public GameHome(Party party)
         {
-            _party = party;
+            Party = party;
             RouteCtrl._home.InitItem();
         }
     }
