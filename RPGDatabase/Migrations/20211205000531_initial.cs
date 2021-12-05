@@ -38,7 +38,9 @@ namespace RPGDatabase.Migrations
                     StatsId = table.Column<int>(type: "int", nullable: true),
                     Level = table.Column<int>(type: "int", nullable: false),
                     ExperienceLvl = table.Column<int>(type: "int", nullable: false),
-                    Money = table.Column<int>(type: "int", nullable: false)
+                    Money = table.Column<int>(type: "int", nullable: false),
+                    Pv = table.Column<int>(type: "int", nullable: false),
+                    PvMax = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,6 +49,40 @@ namespace RPGDatabase.Migrations
                         name: "FK_HeroSet_CharacterStat_StatsId",
                         column: x => x.StatsId,
                         principalTable: "CharacterStat",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "ItemCtrl",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Libelle = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Pv = table.Column<int>(type: "int", nullable: false),
+                    Discriminator = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    HeroId = table.Column<int>(type: "int", nullable: true),
+                    HeroId1 = table.Column<int>(type: "int", nullable: true),
+                    Power = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ItemCtrl", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ItemCtrl_HeroSet_HeroId",
+                        column: x => x.HeroId,
+                        principalTable: "HeroSet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ItemCtrl_HeroSet_HeroId1",
+                        column: x => x.HeroId1,
+                        principalTable: "HeroSet",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 })
@@ -80,6 +116,16 @@ namespace RPGDatabase.Migrations
                 column: "StatsId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ItemCtrl_HeroId",
+                table: "ItemCtrl",
+                column: "HeroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ItemCtrl_HeroId1",
+                table: "ItemCtrl",
+                column: "HeroId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PartySet_HeroId",
                 table: "PartySet",
                 column: "HeroId");
@@ -87,6 +133,9 @@ namespace RPGDatabase.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ItemCtrl");
+
             migrationBuilder.DropTable(
                 name: "PartySet");
 

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using RPGDatabase.Models.Item;
+
 namespace RPGDatabase.Models.Character
 {
     public class CharacterCtrl
@@ -15,6 +18,12 @@ namespace RPGDatabase.Models.Character
 
         public int Money { get; set; }
 
+        public int Pv { get; set; }
+
+        public int PvMax { get; set; }
+
+        public List<ItemCtrl> Loots { get; set; }
+
         public CharacterCtrl()
         {
         }
@@ -22,9 +31,12 @@ namespace RPGDatabase.Models.Character
         public CharacterCtrl(string name)
         {
             Name = name;
-            Level = 0;
+            Level = 1;
             ExperienceLvl = 0;
-            Money = 10;
+            Money = 100;
+            PvMax = 30;
+            Pv = PvMax;
+            Loots = new List<ItemCtrl>();
             Stats = new CharacterStat();
         }
     }

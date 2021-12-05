@@ -9,8 +9,8 @@ using RPGDatabase;
 namespace RPGDatabase.Migrations
 {
     [DbContext(typeof(RpgContext))]
-    [Migration("20211117184937_initial2")]
-    partial class initial2
+    [Migration("20211205000531_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -60,6 +60,12 @@ namespace RPGDatabase.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Pv")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PvMax")
+                        .HasColumnType("int");
+
                     b.Property<int?>("StatsId")
                         .HasColumnType("int");
 
@@ -89,6 +95,66 @@ namespace RPGDatabase.Migrations
                     b.ToTable("PartySet");
                 });
 
+            modelBuilder.Entity("RPGDatabase.Models.Item.ItemCtrl", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("HeroId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Libelle")
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("Pv")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HeroId");
+
+                    b.ToTable("ItemCtrl");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("ItemCtrl");
+                });
+
+            modelBuilder.Entity("RPGDatabase.Models.Item.Consomable", b =>
+                {
+                    b.HasBaseType("RPGDatabase.Models.Item.ItemCtrl");
+
+                    b.HasDiscriminator().HasValue("Consomable");
+                });
+
+            modelBuilder.Entity("RPGDatabase.Models.Item.Equipment", b =>
+                {
+                    b.HasBaseType("RPGDatabase.Models.Item.ItemCtrl");
+
+                    b.Property<int?>("HeroId1")
+                        .HasColumnType("int");
+
+                    b.HasIndex("HeroId1");
+
+                    b.HasDiscriminator().HasValue("Equipment");
+                });
+
+            modelBuilder.Entity("RPGDatabase.Models.Item.Weapon", b =>
+                {
+                    b.HasBaseType("RPGDatabase.Models.Item.ItemCtrl");
+
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
+
+                    b.HasDiscriminator().HasValue("Weapon");
+                });
+
             modelBuilder.Entity("RPGDatabase.Models.Character.Hero", b =>
                 {
                     b.HasOne("RPGDatabase.Models.Character.CharacterStat", "Stats")
@@ -105,6 +171,27 @@ namespace RPGDatabase.Migrations
                         .HasForeignKey("HeroId");
 
                     b.Navigation("Hero");
+                });
+
+            modelBuilder.Entity("RPGDatabase.Models.Item.ItemCtrl", b =>
+                {
+                    b.HasOne("RPGDatabase.Models.Character.Hero", null)
+                        .WithMany("Loots")
+                        .HasForeignKey("HeroId");
+                });
+
+            modelBuilder.Entity("RPGDatabase.Models.Item.Equipment", b =>
+                {
+                    b.HasOne("RPGDatabase.Models.Character.Hero", null)
+                        .WithMany("Equipments")
+                        .HasForeignKey("HeroId1");
+                });
+
+            modelBuilder.Entity("RPGDatabase.Models.Character.Hero", b =>
+                {
+                    b.Navigation("Equipments");
+
+                    b.Navigation("Loots");
                 });
 #pragma warning restore 612, 618
         }

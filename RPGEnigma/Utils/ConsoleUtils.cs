@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using RPGDatabase.Models.GamePart;
 using RPGEnigma.Menu;
 
@@ -67,6 +68,15 @@ namespace RPGEnigma.Utils
         {
             Console.WriteLine(question);
             return Console.ReadLine();
+        }
+
+        public static void WriteLetterByLetter(string text)
+        {
+            foreach(char letter in text)
+            {
+                Console.Write(letter);
+                Thread.Sleep(40);
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RPGDatabase.Models.Character;
 using RPGDatabase.Models.GamePart;
+using RPGDatabase.Models.Item;
 
 namespace RPGDatabase
 {
@@ -21,5 +22,11 @@ namespace RPGDatabase
         public DbSet<Hero> HeroSet { get; set; }
 
         public DbSet<Party> PartySet { get; set; }
+
+        public DbSet<Equipment> EquipmentSet { get; set; }
+
+        public DbSet<Consomable> ConsomableSet { get; set; }
+
+        public DbSet<Weapon> WeaponSet { get; set; }
     }
 }
