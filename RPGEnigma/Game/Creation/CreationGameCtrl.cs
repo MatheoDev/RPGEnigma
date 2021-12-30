@@ -1,5 +1,6 @@
 ﻿using System;
 using RPGDatabase.Models.Character;
+using RPGEnigma.Game.Naration;
 using RPGEnigma.Menu;
 using RPGEnigma.Service;
 using RPGEnigma.Utils;
@@ -15,7 +16,8 @@ namespace RPGEnigma.Game.Creation
 
         public void ProcessCreating()
         {
-            string nameHero = ConsoleUtils.AskPlayerReturnString("Quel sera le nom de votre Héros (le nom de la partie sera le même) ?");
+            NarationDialogue.Beginning();
+            string nameHero = ConsoleUtils.AskPlayerReturnString("Quelle est votre nom?\n", true);
             CreatePartAndHero(nameHero);
         }
 

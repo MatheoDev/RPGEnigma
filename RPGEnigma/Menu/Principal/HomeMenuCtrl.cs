@@ -65,7 +65,6 @@ namespace RPGEnigma.Menu.Principal
                 MakeSomething(numberParty);
             } else
             {
-                Console.WriteLine("Créez une partie !");
                 _creationGame = new CreationGameCtrl();
             }
         }

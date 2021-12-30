@@ -14,6 +14,7 @@
     <None Remove="Service\" />
     <None Remove="Game\" />
     <None Remove="Game\Creation\" />
+    <None Remove="Game\Naration\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Utils\" />
@@ -24,6 +25,7 @@
     <Folder Include="Service\" />
     <Folder Include="Game\" />
     <Folder Include="Game\Creation\" />
+    <Folder Include="Game\Naration\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RPGDatabase\RPGDatabase.csproj" />

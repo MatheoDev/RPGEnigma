@@ -64,9 +64,15 @@ namespace RPGEnigma.Utils
             return letter;
         }
 
-        public static string AskPlayerReturnString(string question)
+        public static string AskPlayerReturnString(string question, bool lByL = false)
         {
-            Console.WriteLine(question);
+            if (lByL)
+            {
+                WriteLetterByLetter(question);
+            } else
+            {
+                Console.WriteLine(question);
+            }
             return Console.ReadLine();
         }
 
