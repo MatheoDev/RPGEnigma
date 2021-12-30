@@ -17,14 +17,14 @@
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />
     <None Remove="Models\GamePart\" />
     <None Remove="Models\Item\" />
-    <None Remove="Migrations\" />
+    <None Remove="Models\Enum\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Models\Character\" />
     <Folder Include="Models\GamePart\" />
     <Folder Include="Models\Item\" />
-    <Folder Include="Migrations\" />
+    <Folder Include="Models\Enum\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.2" />

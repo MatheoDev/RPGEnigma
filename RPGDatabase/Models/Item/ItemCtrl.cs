@@ -1,4 +1,6 @@
 ﻿using System;
+using RPGDatabase.Models.Enum;
+
 namespace RPGDatabase.Models.Item
 {
     public class ItemCtrl
@@ -7,15 +9,24 @@ namespace RPGDatabase.Models.Item
 
         public string Libelle { get; set; }
 
+        public int Price { get; set; }
+
         public int Quantity { get; set; }
 
         public int Pv { get; set; }
 
-        public ItemCtrl(string libelle, int pv)
+        public int Level { get; set; }
+
+        public TypeEnum Type { get; set; }
+
+        public ItemCtrl(string libelle, int pv, TypeEnum type, int price)
         {
             Pv = pv;
             Libelle = libelle;
             Quantity = 1;
+            Level = 1;
+            Type = type;
+            Price = price;
         }
     }
 }
