@@ -18,6 +18,7 @@ namespace RPGEnigma.Game.Creation
         {
             NarationDialogue.Beginning();
             string nameHero = ConsoleUtils.AskPlayerReturnString("Quelle est votre nom?\n", true);
+            NarationDialogue.HistoryAndStart(nameHero);
             CreatePartAndHero(nameHero);
         }
 
