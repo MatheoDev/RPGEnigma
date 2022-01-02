@@ -7,6 +7,9 @@ using RPGEnigma.Utils;
 
 namespace RPGEnigma.Game.Creation
 {
+    /**
+     * Classe permettant de créer une partie 
+     */
     public class CreationGameCtrl
     {
         public CreationGameCtrl()

@@ -1,6 +1,9 @@
 ﻿using System;
 namespace RPGDatabase.Models.Character
 {
+    /**
+     * Entité Stat
+     */
     public class CharacterStat
     {
         public int Id { get; set; }

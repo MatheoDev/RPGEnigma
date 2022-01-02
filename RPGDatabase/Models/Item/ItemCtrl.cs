@@ -3,6 +3,9 @@ using RPGDatabase.Models.Enum;
 
 namespace RPGDatabase.Models.Item
 {
+    /**
+     * Entité des items
+     */
     public class ItemCtrl
     {
         public int Id { get; set; }

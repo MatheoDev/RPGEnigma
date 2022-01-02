@@ -3,6 +3,9 @@ using RPGEnigma.Utils;
 
 namespace RPGEnigma.Game.Naration
 {
+    /**
+     * Classe de la naration
+     */
     public static class NarationDialogue
     {
         private static string TEXT_BEGIN = "Bienvenue dans le monde de Soyakichu" +

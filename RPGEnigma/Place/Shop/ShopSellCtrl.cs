@@ -7,6 +7,9 @@ using RPGEnigma.Utils;
 
 namespace RPGEnigma.Place.Shop
 {
+    /**
+     * Classe simulant la vente d'un item
+     */
     public class ShopSellCtrl : IMenuItem
     {
         private List<string> _menuString;

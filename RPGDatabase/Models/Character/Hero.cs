@@ -4,6 +4,9 @@ using RPGDatabase.Models.Item;
 
 namespace RPGDatabase.Models.Character
 {
+    /**
+     * Entité Héro
+     */
     public class Hero : CharacterCtrl
     {
         public List<Equipment> Equipments { get; set; }

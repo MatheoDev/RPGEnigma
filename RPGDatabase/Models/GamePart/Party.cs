@@ -3,6 +3,9 @@ using RPGDatabase.Models.Character;
 
 namespace RPGDatabase.Models.GamePart
 {
+    /**
+     * Entité Partie
+     */
     public class Party
     {
         public int Id { get; set; }

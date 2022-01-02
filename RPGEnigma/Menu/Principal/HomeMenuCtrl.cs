@@ -8,6 +8,9 @@ using RPGEnigma.Utils;
 
 namespace RPGEnigma.Menu.Principal
 {
+    /**
+     * Classe du menu principale
+     */
     public class HomeMenuCtrl : IMenuItem
     {
         private List<Party> _parties;
@@ -31,11 +34,17 @@ namespace RPGEnigma.Menu.Principal
             ManageMenu();
         }
 
+        /**
+         * Verifie le nombre de partie 
+         */
         private bool CheckNumberOfParty()
         {
             return _parties.Count != 0 ? true : false;
         }
 
+        /**
+         * Permet de faire soit une création de partie ou bien de lancer le jeu pour une partie
+         */
         private void MakeSomething(int numberParty)
         {
             if (numberParty == _parties.Count)
@@ -48,6 +57,9 @@ namespace RPGEnigma.Menu.Principal
             }
         }
 
+        /**
+         * Permet de créer le menu principale 
+         */
         private void ManageMenu()
         {
             if (CheckNumberOfParty())

@@ -4,6 +4,9 @@ using RPGEnigma.Menu;
 
 namespace RPGEnigma.Place.Shop
 {
+    /**
+     * Classe du menu SHOP
+     */
     public class ShopCtrl : IMenuItem
     {
         List<IMenuItem> _options = new List<IMenuItem>();

@@ -3,6 +3,9 @@ using RPGDatabase.Models.Enum;
 
 namespace RPGDatabase.Models.Item
 {
+    /**
+     * Entité des armes
+     */
     public class Weapon : ItemCtrl
     {
         public int Power { get; set; }
