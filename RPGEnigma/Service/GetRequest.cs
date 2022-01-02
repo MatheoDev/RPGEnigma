@@ -78,5 +78,17 @@ namespace RPGEnigma.Service
             }
             return listItem;
         }
+
+        /**
+         * Sauvegarde du héros en base
+         */
+        public static void SavePart(Hero hero)
+        {
+            using (RpgContext rpgContext = new RpgContext())
+            {
+                rpgContext.Update(hero);
+                rpgContext.SaveChanges();
+            }
+        }
     }
 }
