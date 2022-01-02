@@ -82,18 +82,23 @@ namespace RPGEnigma.Place.Shop
                         if (GameHome.Party.Hero.AsNotItem(item) && !GameHome.Party.Hero.IsNotFull())
                         {
                             ResetShop("Inventaire plein");
-                        } else { GameHome.Party.Hero.AddConsomable(item); }
+                        } else {
+                            GameHome.Party.Hero.AddConsomable(item);
+                            GameHome.Party.Hero.Money = GameHome.Party.Hero.Money - item.Price;
+                        }
                     } else if (item is Equipment)
                     {
                         GameHome.Party.Hero.AddEquipment(item);
+                        GameHome.Party.Hero.Money = GameHome.Party.Hero.Money - item.Price;
                     } else
                     {
                         if (GameHome.Party.Hero.IsNotFull())
                         {
                             GameHome.Party.Hero.AddLoot(item);
+                            GameHome.Party.Hero.Money = GameHome.Party.Hero.Money - item.Price;
                         } else { ResetShop("Inventaire plein"); }
                     }
-                    Console.WriteLine("Achat de cet item : {0}", item.Libelle);
+                    ResetShop("Vous avez acheté cet item : "+item.Libelle);
                 } else
                 {
                     ResetShop("Vous avez déjà cet item");
