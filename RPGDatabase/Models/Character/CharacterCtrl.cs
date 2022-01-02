@@ -26,6 +26,7 @@ namespace RPGDatabase.Models.Character
 
         public CharacterCtrl()
         {
+            Loots = new List<ItemCtrl>();
         }
 
         public CharacterCtrl(string name)

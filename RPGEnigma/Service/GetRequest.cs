@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using RPGDatabase;
 using RPGDatabase.Models.Character;
 using RPGDatabase.Models.GamePart;
+using RPGDatabase.Models.Item;
 
 namespace RPGEnigma.Service
 {
@@ -31,6 +32,9 @@ namespace RPGEnigma.Service
             return listParty;
         }
 
+        /**
+         * Creation de la partie et du héros
+         */
         public static void SetPartyHero(string nameHero)
         {
             using (RpgContext rpgContext = new RpgContext())
@@ -38,6 +42,41 @@ namespace RPGEnigma.Service
                 rpgContext.PartySet.Add(new Party(nameHero, new Hero(nameHero)));
                 rpgContext.SaveChanges();
             }
+        }
+
+        /**
+         * Liste des items (pour le shop)
+         */
+        public static List<ItemCtrl> GetItemToBuy(int levelHero)
+        {
+            List<ItemCtrl> listItem = new List<ItemCtrl>();
+            using (RpgContext rpgContext = new RpgContext())
+            {
+                foreach (Equipment equipment in rpgContext.EquipmentSet)
+                {
+                    if (equipment.Level == levelHero)
+                    {
+                        listItem.Add(equipment);
+                    }
+                }
+                foreach (Consomable consomable in rpgContext.ConsomableSet)
+                {
+
+                    if (consomable.Level == levelHero)
+                    {
+                        listItem.Add(consomable);
+                    }
+                }
+                foreach (Weapon weapon in rpgContext.WeaponSet)
+                {
+
+                    if (weapon.Level == levelHero)
+                    {
+                        listItem.Add(weapon);
+                    }
+                }
+            }
+            return listItem;
         }
     }
 }
