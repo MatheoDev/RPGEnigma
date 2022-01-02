@@ -85,5 +85,25 @@ namespace RPGDatabase.Models.Character
                 Loots.Add(item);
             }
         }
+
+        public void RemoveConsommable(ItemCtrl item)
+        {
+            bool remove = false;
+            foreach (ItemCtrl loot in Loots)
+            {
+                if (loot.Libelle == item.Libelle)
+                {
+                    if (loot.Quantity > 1)
+                    {
+                        item.Quantity = item.Quantity - 1;
+                        remove = true;
+                    }
+                }
+            }
+            if (!remove)
+            {
+                Loots.Remove(item);
+            }
+        }
     }
 }
