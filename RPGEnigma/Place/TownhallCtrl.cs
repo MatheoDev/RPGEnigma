@@ -7,6 +7,9 @@ using RPGEnigma.Utils;
 
 namespace RPGEnigma.Place
 {
+    /**
+     * Classe gerant la sauvegarde de la partie
+     */
     public class TownhallCtrl : IMenuItem
     {
         private List<string> _menuList = new List<string>();
@@ -31,6 +34,11 @@ namespace RPGEnigma.Place
             WaitAction();
         }
 
+        /**
+         * Action de l'utilisateur
+         * Soit il retourne au menu
+         * Soit il sauvegarde la partie
+         */
         private void WaitAction()
         {
             int action = ConsoleUtils.AskPlayerReturnInt("Voulez vous sauvegarder ?", 0, 2);
