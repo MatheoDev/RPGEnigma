@@ -14,14 +14,18 @@ namespace RPGDatabase.Models.GamePart
 
         public Hero Hero { get; set; }
 
+        public LevelStory Story { get; set; }
+
         public Party()
         {
+            Story = new LevelStory();
         }
 
         public Party(string name, Hero hero)
         {
             Name = name;
             Hero = hero;
+            Story = new LevelStory();
         }
     }
 }

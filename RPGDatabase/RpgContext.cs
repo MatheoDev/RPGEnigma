@@ -30,5 +30,7 @@ namespace RPGDatabase
         public DbSet<Consomable> ConsomableSet { get; set; }
 
         public DbSet<Weapon> WeaponSet { get; set; }
+
+        public DbSet<LevelStory> StorySet { get; set; }
     }
 }

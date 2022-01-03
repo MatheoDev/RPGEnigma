@@ -28,6 +28,22 @@ namespace RPGDatabase.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "StorySet",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    IleType = table.Column<int>(type: "int", nullable: false),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    Pourcentage = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StorySet", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "HeroSet",
                 columns: table => new
                 {
@@ -55,6 +71,70 @@ namespace RPGDatabase.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
+                name: "MonsterSet",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Type = table.Column<int>(type: "int", nullable: false),
+                    LevelStoryId = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    StatsId = table.Column<int>(type: "int", nullable: true),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    ExperienceLvl = table.Column<int>(type: "int", nullable: false),
+                    Money = table.Column<int>(type: "int", nullable: false),
+                    Pv = table.Column<int>(type: "int", nullable: false),
+                    PvMax = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MonsterSet", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MonsterSet_CharacterStat_StatsId",
+                        column: x => x.StatsId,
+                        principalTable: "CharacterStat",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_MonsterSet_StorySet_LevelStoryId",
+                        column: x => x.LevelStoryId,
+                        principalTable: "StorySet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "PartySet",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    HeroId = table.Column<int>(type: "int", nullable: true),
+                    StoryId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PartySet", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PartySet_HeroSet_HeroId",
+                        column: x => x.HeroId,
+                        principalTable: "HeroSet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PartySet_StorySet_StoryId",
+                        column: x => x.StoryId,
+                        principalTable: "StorySet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
                 name: "ItemCtrl",
                 columns: table => new
                 {
@@ -70,6 +150,7 @@ namespace RPGDatabase.Migrations
                     Discriminator = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     HeroId = table.Column<int>(type: "int", nullable: true),
+                    MonsterId = table.Column<int>(type: "int", nullable: true),
                     HeroId1 = table.Column<int>(type: "int", nullable: true),
                     Power = table.Column<int>(type: "int", nullable: true)
                 },
@@ -88,26 +169,10 @@ namespace RPGDatabase.Migrations
                         principalTable: "HeroSet",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "PartySet",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    HeroId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PartySet", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PartySet_HeroSet_HeroId",
-                        column: x => x.HeroId,
-                        principalTable: "HeroSet",
+                        name: "FK_ItemCtrl_MonsterSet_MonsterId",
+                        column: x => x.MonsterId,
+                        principalTable: "MonsterSet",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 })
@@ -129,9 +194,29 @@ namespace RPGDatabase.Migrations
                 column: "HeroId1");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ItemCtrl_MonsterId",
+                table: "ItemCtrl",
+                column: "MonsterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MonsterSet_LevelStoryId",
+                table: "MonsterSet",
+                column: "LevelStoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MonsterSet_StatsId",
+                table: "MonsterSet",
+                column: "StatsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PartySet_HeroId",
                 table: "PartySet",
                 column: "HeroId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PartySet_StoryId",
+                table: "PartySet",
+                column: "StoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -143,7 +228,13 @@ namespace RPGDatabase.Migrations
                 name: "PartySet");
 
             migrationBuilder.DropTable(
+                name: "MonsterSet");
+
+            migrationBuilder.DropTable(
                 name: "HeroSet");
+
+            migrationBuilder.DropTable(
+                name: "StorySet");
 
             migrationBuilder.DropTable(
                 name: "CharacterStat");

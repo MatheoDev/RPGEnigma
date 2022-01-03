@@ -39,7 +39,11 @@ namespace RPGEnigma.Service
         {
             using (RpgContext rpgContext = new RpgContext())
             {
-                rpgContext.PartySet.Add(new Party(nameHero, new Hero(nameHero)));
+                Hero hero = new Hero(nameHero);
+                hero.Stats.Power = 6;
+                hero.Stats.Dexterity = 4;
+                hero.Stats.Intelligence = 2;
+                rpgContext.PartySet.Add(new Party(nameHero, hero));
                 rpgContext.SaveChanges();
             }
         }

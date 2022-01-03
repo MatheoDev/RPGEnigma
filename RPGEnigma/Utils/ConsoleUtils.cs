@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using RPGDatabase.Models.GamePart;
+using RPGEnigma.Game;
 using RPGEnigma.Menu;
 
 namespace RPGEnigma.Utils
@@ -83,6 +84,16 @@ namespace RPGEnigma.Utils
                 Console.Write(letter);
                 Thread.Sleep(40);
             }
+        }
+
+        public static void WriteInfosHero()
+        {
+            Console.WriteLine("Pv: {0}/{1}\nNiveau: {2} | {3}Xp\nArgent: {4}\n",
+                GameHome.Party.Hero.Pv, GameHome.Party.Hero.PvMax, GameHome.Party.Hero.Level,
+                GameHome.Party.Hero.ExperienceLvl, GameHome.Party.Hero.Money);
+            Console.WriteLine("Force: {0}\nDextérité: {1}\nIntelligence: {2}\nDiscrétion: {3}\n",
+                GameHome.Party.Hero.Stats.Power, GameHome.Party.Hero.Stats.Dexterity,
+                GameHome.Party.Hero.Stats.Intelligence, GameHome.Party.Hero.Stats.Discretion);
         }
     }
 }

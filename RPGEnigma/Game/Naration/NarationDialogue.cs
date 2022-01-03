@@ -19,7 +19,8 @@ namespace RPGEnigma.Game.Naration
             "respect une fois vaincu...\n" +
             "Ton but dans cette aventure est d'aller chercher un trésor détenu par\n" +
             "la plus forte des civilisations de ce monde. Le chemin sera de rude épreuve.\n" +
-            "En selle :hero et bon courage, prend donc le chemin au dos de ce dragon amical.";
+            "En selle :hero et bon courage, prend donc le chemin au dos de ce dragon amical.\n" +
+            "Appuyer sur une touche pour continuer.";
 
         public static void Beginning()
         {

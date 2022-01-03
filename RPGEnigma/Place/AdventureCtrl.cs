@@ -1,5 +1,6 @@
 ﻿using System;
 using RPGEnigma.Menu;
+using RPGEnigma.Utils;
 
 namespace RPGEnigma.Place
 {
@@ -16,6 +17,7 @@ namespace RPGEnigma.Place
         {
             Console.Clear();
             Console.WriteLine("--- AVENTURE ---");
+            ConsoleUtils.WriteInfosHero();
         }
     }
 }
