@@ -21,6 +21,8 @@ namespace RPGDatabase
 
         public DbSet<Hero> HeroSet { get; set; }
 
+        public DbSet<Monster> MonsterSet { get; set; }
+
         public DbSet<Party> PartySet { get; set; }
 
         public DbSet<Equipment> EquipmentSet { get; set; }

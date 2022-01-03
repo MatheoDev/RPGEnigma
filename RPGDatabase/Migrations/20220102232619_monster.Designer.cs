@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RPGDatabase;
 
 namespace RPGDatabase.Migrations
 {
     [DbContext(typeof(RpgContext))]
-    partial class RpgContextModelSnapshot : ModelSnapshot
+    [Migration("20220102232619_monster")]
+    partial class monster
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

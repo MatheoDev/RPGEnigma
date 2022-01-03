@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RPGDatabase;
 
 namespace RPGDatabase.Migrations
 {
     [DbContext(typeof(RpgContext))]
-    partial class RpgContextModelSnapshot : ModelSnapshot
+    [Migration("20220102232416_initial2")]
+    partial class initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,43 +76,6 @@ namespace RPGDatabase.Migrations
                     b.ToTable("HeroSet");
                 });
 
-            modelBuilder.Entity("RPGDatabase.Models.Character.Monster", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExperienceLvl")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Level")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Money")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("Pv")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PvMax")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StatsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StatsId");
-
-                    b.ToTable("MonsterSet");
-                });
-
             modelBuilder.Entity("RPGDatabase.Models.GamePart.Party", b =>
                 {
                     b.Property<int>("Id")
@@ -149,9 +114,6 @@ namespace RPGDatabase.Migrations
                     b.Property<string>("Libelle")
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("MonsterId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
@@ -167,8 +129,6 @@ namespace RPGDatabase.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("HeroId");
-
-                    b.HasIndex("MonsterId");
 
                     b.ToTable("ItemCtrl");
 
@@ -213,15 +173,6 @@ namespace RPGDatabase.Migrations
                     b.Navigation("Stats");
                 });
 
-            modelBuilder.Entity("RPGDatabase.Models.Character.Monster", b =>
-                {
-                    b.HasOne("RPGDatabase.Models.Character.CharacterStat", "Stats")
-                        .WithMany()
-                        .HasForeignKey("StatsId");
-
-                    b.Navigation("Stats");
-                });
-
             modelBuilder.Entity("RPGDatabase.Models.GamePart.Party", b =>
                 {
                     b.HasOne("RPGDatabase.Models.Character.Hero", "Hero")
@@ -236,10 +187,6 @@ namespace RPGDatabase.Migrations
                     b.HasOne("RPGDatabase.Models.Character.Hero", null)
                         .WithMany("Loots")
                         .HasForeignKey("HeroId");
-
-                    b.HasOne("RPGDatabase.Models.Character.Monster", null)
-                        .WithMany("Loots")
-                        .HasForeignKey("MonsterId");
                 });
 
             modelBuilder.Entity("RPGDatabase.Models.Item.Equipment", b =>
@@ -253,11 +200,6 @@ namespace RPGDatabase.Migrations
                 {
                     b.Navigation("Equipments");
 
-                    b.Navigation("Loots");
-                });
-
-            modelBuilder.Entity("RPGDatabase.Models.Character.Monster", b =>
-                {
                     b.Navigation("Loots");
                 });
 #pragma warning restore 612, 618
