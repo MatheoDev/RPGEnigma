@@ -86,14 +86,20 @@ namespace RPGEnigma.Utils
             }
         }
 
+        public static void WriteInfosStory()
+        {
+            Console.WriteLine("Ile: {0} | Niveau: {1} | {2}/100%\n",
+                GameHome.Party.Story.IleType, GameHome.Party.Story.Level, GameHome.Party.Story.Pourcentage);
+        }
+
         public static void WriteInfosHero()
         {
             Console.WriteLine("Pv: {0}/{1}\nNiveau: {2} | {3}Xp\nArgent: {4}\n",
                 GameHome.Party.Hero.Pv, GameHome.Party.Hero.PvMax, GameHome.Party.Hero.Level,
                 GameHome.Party.Hero.ExperienceLvl, GameHome.Party.Hero.Money);
             Console.WriteLine("Force: {0}\nDextérité: {1}\nIntelligence: {2}\nDiscrétion: {3}\n",
-                GameHome.Party.Hero.Stats.Power, GameHome.Party.Hero.Stats.Dexterity,
-                GameHome.Party.Hero.Stats.Intelligence, GameHome.Party.Hero.Stats.Discretion);
+                GameHome.Party.Hero.Power, GameHome.Party.Hero.Dexterity,
+                GameHome.Party.Hero.Intelligence, GameHome.Party.Hero.Discretion);
         }
     }
 }

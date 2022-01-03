@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RPGDatabase.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,11 +11,18 @@ namespace RPGDatabase.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "CharacterStat",
+                name: "HeroSet",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    ExperienceLvl = table.Column<int>(type: "int", nullable: false),
+                    Money = table.Column<int>(type: "int", nullable: false),
+                    Pv = table.Column<int>(type: "int", nullable: false),
+                    PvMax = table.Column<int>(type: "int", nullable: false),
                     Power = table.Column<int>(type: "int", nullable: false),
                     Dexterity = table.Column<int>(type: "int", nullable: false),
                     Intelligence = table.Column<int>(type: "int", nullable: false),
@@ -23,7 +30,7 @@ namespace RPGDatabase.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CharacterStat", x => x.Id);
+                    table.PrimaryKey("PK_HeroSet", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -44,33 +51,6 @@ namespace RPGDatabase.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "HeroSet",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    StatsId = table.Column<int>(type: "int", nullable: true),
-                    Level = table.Column<int>(type: "int", nullable: false),
-                    ExperienceLvl = table.Column<int>(type: "int", nullable: false),
-                    Money = table.Column<int>(type: "int", nullable: false),
-                    Pv = table.Column<int>(type: "int", nullable: false),
-                    PvMax = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HeroSet", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_HeroSet_CharacterStat_StatsId",
-                        column: x => x.StatsId,
-                        principalTable: "CharacterStat",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "MonsterSet",
                 columns: table => new
                 {
@@ -80,22 +60,19 @@ namespace RPGDatabase.Migrations
                     LevelStoryId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    StatsId = table.Column<int>(type: "int", nullable: true),
                     Level = table.Column<int>(type: "int", nullable: false),
                     ExperienceLvl = table.Column<int>(type: "int", nullable: false),
                     Money = table.Column<int>(type: "int", nullable: false),
                     Pv = table.Column<int>(type: "int", nullable: false),
-                    PvMax = table.Column<int>(type: "int", nullable: false)
+                    PvMax = table.Column<int>(type: "int", nullable: false),
+                    Power = table.Column<int>(type: "int", nullable: false),
+                    Dexterity = table.Column<int>(type: "int", nullable: false),
+                    Intelligence = table.Column<int>(type: "int", nullable: false),
+                    Discretion = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MonsterSet", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MonsterSet_CharacterStat_StatsId",
-                        column: x => x.StatsId,
-                        principalTable: "CharacterStat",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_MonsterSet_StorySet_LevelStoryId",
                         column: x => x.LevelStoryId,
@@ -179,11 +156,6 @@ namespace RPGDatabase.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HeroSet_StatsId",
-                table: "HeroSet",
-                column: "StatsId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ItemCtrl_HeroId",
                 table: "ItemCtrl",
                 column: "HeroId");
@@ -202,11 +174,6 @@ namespace RPGDatabase.Migrations
                 name: "IX_MonsterSet_LevelStoryId",
                 table: "MonsterSet",
                 column: "LevelStoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MonsterSet_StatsId",
-                table: "MonsterSet",
-                column: "StatsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PartySet_HeroId",
@@ -235,9 +202,6 @@ namespace RPGDatabase.Migrations
 
             migrationBuilder.DropTable(
                 name: "StorySet");
-
-            migrationBuilder.DropTable(
-                name: "CharacterStat");
         }
     }
 }

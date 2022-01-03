@@ -13,8 +13,6 @@ namespace RPGDatabase.Models.Character
 
         public string Name { get; set; }
 
-        public CharacterStat Stats { get; set; }
-
         public int Level { get; set; }
 
         public int ExperienceLvl { get; set; }
@@ -27,10 +25,17 @@ namespace RPGDatabase.Models.Character
 
         public List<ItemCtrl> Loots { get; set; }
 
+        public int Power { get; set; }
+
+        public int Dexterity { get; set; }
+
+        public int Intelligence { get; set; }
+
+        public int Discretion { get; set; }
+
         public CharacterCtrl()
         {
             Loots = new List<ItemCtrl>();
-            Stats = new CharacterStat();
         }
 
         public CharacterCtrl(string name)
@@ -42,7 +47,6 @@ namespace RPGDatabase.Models.Character
             PvMax = 30;
             Pv = PvMax;
             Loots = new List<ItemCtrl>();
-            Stats = new CharacterStat();
         }
     }
 }

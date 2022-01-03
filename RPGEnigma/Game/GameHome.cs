@@ -1,6 +1,8 @@
 ﻿using System;
+using RPGDatabase.Models.Character;
 using RPGDatabase.Models.GamePart;
 using RPGEnigma.Menu;
+using RPGEnigma.Service;
 
 namespace RPGEnigma.Game
 {
@@ -10,6 +12,7 @@ namespace RPGEnigma.Game
     public class GameHome
     {
         public static Party Party { get; set; }
+        public static Hero Hero { get; set; }
 
         public GameHome(Party party)
         {

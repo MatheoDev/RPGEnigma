@@ -17,7 +17,7 @@ namespace RPGDatabase.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.10");
 
-            modelBuilder.Entity("RPGDatabase.Models.Character.CharacterStat", b =>
+            modelBuilder.Entity("RPGDatabase.Models.Character.Hero", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -29,24 +29,10 @@ namespace RPGDatabase.Migrations
                     b.Property<int>("Discretion")
                         .HasColumnType("int");
 
-                    b.Property<int>("Intelligence")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Power")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CharacterStat");
-                });
-
-            modelBuilder.Entity("RPGDatabase.Models.Character.Hero", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
                     b.Property<int>("ExperienceLvl")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Intelligence")
                         .HasColumnType("int");
 
                     b.Property<int>("Level")
@@ -58,18 +44,16 @@ namespace RPGDatabase.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
+
                     b.Property<int>("Pv")
                         .HasColumnType("int");
 
                     b.Property<int>("PvMax")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StatsId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("StatsId");
 
                     b.ToTable("HeroSet");
                 });
@@ -80,7 +64,16 @@ namespace RPGDatabase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("Dexterity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Discretion")
+                        .HasColumnType("int");
+
                     b.Property<int>("ExperienceLvl")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Intelligence")
                         .HasColumnType("int");
 
                     b.Property<int>("Level")
@@ -95,13 +88,13 @@ namespace RPGDatabase.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Power")
+                        .HasColumnType("int");
+
                     b.Property<int>("Pv")
                         .HasColumnType("int");
 
                     b.Property<int>("PvMax")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StatsId")
                         .HasColumnType("int");
 
                     b.Property<int>("Type")
@@ -110,8 +103,6 @@ namespace RPGDatabase.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("LevelStoryId");
-
-                    b.HasIndex("StatsId");
 
                     b.ToTable("MonsterSet");
                 });
@@ -234,26 +225,11 @@ namespace RPGDatabase.Migrations
                     b.HasDiscriminator().HasValue("Weapon");
                 });
 
-            modelBuilder.Entity("RPGDatabase.Models.Character.Hero", b =>
-                {
-                    b.HasOne("RPGDatabase.Models.Character.CharacterStat", "Stats")
-                        .WithMany()
-                        .HasForeignKey("StatsId");
-
-                    b.Navigation("Stats");
-                });
-
             modelBuilder.Entity("RPGDatabase.Models.Character.Monster", b =>
                 {
                     b.HasOne("RPGDatabase.Models.GamePart.LevelStory", null)
                         .WithMany("Monsters")
                         .HasForeignKey("LevelStoryId");
-
-                    b.HasOne("RPGDatabase.Models.Character.CharacterStat", "Stats")
-                        .WithMany()
-                        .HasForeignKey("StatsId");
-
-                    b.Navigation("Stats");
                 });
 
             modelBuilder.Entity("RPGDatabase.Models.GamePart.Party", b =>

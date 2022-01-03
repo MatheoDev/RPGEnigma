@@ -17,6 +17,7 @@ namespace RPGEnigma.Place
         {
             Console.Clear();
             Console.WriteLine("--- AVENTURE ---");
+            ConsoleUtils.WriteInfosStory();
             ConsoleUtils.WriteInfosHero();
         }
     }

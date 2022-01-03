@@ -24,7 +24,7 @@ namespace RPGEnigma.Service
             List<Party> listParty = new List<Party>();
             using (RpgContext rpgContext = new RpgContext())
             {
-                foreach (Party party in rpgContext.PartySet.Include("Hero.Stats"))
+                foreach (Party party in rpgContext.PartySet.Include("Hero.Loots").Include("Hero.Equipments").Include("Story.Monsters"))
                 {
                     listParty.Add(party);
                 }
@@ -40,9 +40,9 @@ namespace RPGEnigma.Service
             using (RpgContext rpgContext = new RpgContext())
             {
                 Hero hero = new Hero(nameHero);
-                hero.Stats.Power = 6;
-                hero.Stats.Dexterity = 4;
-                hero.Stats.Intelligence = 2;
+                hero.Power = 6;
+                hero.Dexterity = 4;
+                hero.Intelligence = 2;
                 rpgContext.PartySet.Add(new Party(nameHero, hero));
                 rpgContext.SaveChanges();
             }
