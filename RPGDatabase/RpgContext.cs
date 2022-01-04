@@ -19,6 +19,15 @@ namespace RPGDatabase
             optionsBuilder.UseMySql(connectString, ServerVersion.AutoDetect(connectString));
         }
 
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Hero>()
+        //        .HasMany(h => h.Loots)
+        //        .WithOne(i => i.Hero);
+        //    modelBuilder.Entity<Hero>()
+        //        .Ignore(h => h.Equipments);
+        //}
+
         public DbSet<Hero> HeroSet { get; set; }
 
         public DbSet<Monster> MonsterSet { get; set; }

@@ -9,7 +9,7 @@ using RPGDatabase;
 namespace RPGDatabase.Migrations
 {
     [DbContext(typeof(RpgContext))]
-    [Migration("20220103205602_init")]
+    [Migration("20220104201420_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,9 +81,6 @@ namespace RPGDatabase.Migrations
                     b.Property<int>("Level")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LevelStoryId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Money")
                         .HasColumnType("int");
 
@@ -103,8 +100,6 @@ namespace RPGDatabase.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LevelStoryId");
 
                     b.ToTable("MonsterSet");
                 });
@@ -227,13 +222,6 @@ namespace RPGDatabase.Migrations
                     b.HasDiscriminator().HasValue("Weapon");
                 });
 
-            modelBuilder.Entity("RPGDatabase.Models.Character.Monster", b =>
-                {
-                    b.HasOne("RPGDatabase.Models.GamePart.LevelStory", null)
-                        .WithMany("Monsters")
-                        .HasForeignKey("LevelStoryId");
-                });
-
             modelBuilder.Entity("RPGDatabase.Models.GamePart.Party", b =>
                 {
                     b.HasOne("RPGDatabase.Models.Character.Hero", "Hero")
@@ -277,11 +265,6 @@ namespace RPGDatabase.Migrations
             modelBuilder.Entity("RPGDatabase.Models.Character.Monster", b =>
                 {
                     b.Navigation("Loots");
-                });
-
-            modelBuilder.Entity("RPGDatabase.Models.GamePart.LevelStory", b =>
-                {
-                    b.Navigation("Monsters");
                 });
 #pragma warning restore 612, 618
         }

@@ -21,11 +21,11 @@ namespace RPGDatabase.Models.GamePart
             Story = new LevelStory();
         }
 
-        public Party(string name, Hero hero)
+        public Party(string name, Hero hero, LevelStory story)
         {
             Name = name;
             Hero = hero;
-            Story = new LevelStory();
+            Story = story;
         }
     }
 }

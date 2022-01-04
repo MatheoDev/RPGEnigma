@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using RPGDatabase.Models.Item;
 using RPGEnigma.Game;
 using RPGEnigma.Menu;
+using RPGEnigma.Service;
 using RPGEnigma.Utils;
 
 namespace RPGEnigma.Place.Shop
@@ -79,14 +80,17 @@ namespace RPGEnigma.Place.Shop
             if (item is Equipment)
             {
                 GameHome.Party.Hero.Equipments.Remove((Equipment)item);
+                ///GetRequest.RemoveEquipment(item);
                 GameHome.Party.Hero.Money = GameHome.Party.Hero.Money + item.Price;
             } else if (item is Consomable)
             {
                 GameHome.Party.Hero.RemoveConsommable(item);
+                ///GetRequest.RemoveItem(item);
                 GameHome.Party.Hero.Money = GameHome.Party.Hero.Money + item.Price;
             } else
             {
                 GameHome.Party.Hero.Loots.Remove(item);
+                ///GetRequest.RemoveItem(item);
                 GameHome.Party.Hero.Money = GameHome.Party.Hero.Money + item.Price;
             }
             ResetShop("Vous avez vendu cet item : " + item.Libelle);

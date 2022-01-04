@@ -35,29 +35,12 @@ namespace RPGDatabase.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "StorySet",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    IleType = table.Column<int>(type: "int", nullable: false),
-                    Level = table.Column<int>(type: "int", nullable: false),
-                    Pourcentage = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_StorySet", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
                 name: "MonsterSet",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Type = table.Column<int>(type: "int", nullable: false),
-                    LevelStoryId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Level = table.Column<int>(type: "int", nullable: false),
@@ -73,41 +56,22 @@ namespace RPGDatabase.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MonsterSet", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_MonsterSet_StorySet_LevelStoryId",
-                        column: x => x.LevelStoryId,
-                        principalTable: "StorySet",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "PartySet",
+                name: "StorySet",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    HeroId = table.Column<int>(type: "int", nullable: true),
-                    StoryId = table.Column<int>(type: "int", nullable: true)
+                    IleType = table.Column<int>(type: "int", nullable: false),
+                    Level = table.Column<int>(type: "int", nullable: false),
+                    Pourcentage = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PartySet", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_PartySet_HeroSet_HeroId",
-                        column: x => x.HeroId,
-                        principalTable: "HeroSet",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_PartySet_StorySet_StoryId",
-                        column: x => x.StoryId,
-                        principalTable: "StorySet",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                    table.PrimaryKey("PK_StorySet", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -155,6 +119,35 @@ namespace RPGDatabase.Migrations
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
+            migrationBuilder.CreateTable(
+                name: "PartySet",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    HeroId = table.Column<int>(type: "int", nullable: true),
+                    StoryId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PartySet", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_PartySet_HeroSet_HeroId",
+                        column: x => x.HeroId,
+                        principalTable: "HeroSet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_PartySet_StorySet_StoryId",
+                        column: x => x.StoryId,
+                        principalTable: "StorySet",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
+
             migrationBuilder.CreateIndex(
                 name: "IX_ItemCtrl_HeroId",
                 table: "ItemCtrl",
@@ -169,11 +162,6 @@ namespace RPGDatabase.Migrations
                 name: "IX_ItemCtrl_MonsterId",
                 table: "ItemCtrl",
                 column: "MonsterId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MonsterSet_LevelStoryId",
-                table: "MonsterSet",
-                column: "LevelStoryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PartySet_HeroId",
