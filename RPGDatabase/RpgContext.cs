@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RPGDatabase.Models.Character;
 using RPGDatabase.Models.GamePart;
 using RPGDatabase.Models.Item;
+using RPGDatabase.Models.ManyToMany;
 
 namespace RPGDatabase
 {
@@ -19,14 +20,48 @@ namespace RPGDatabase
             optionsBuilder.UseMySql(connectString, ServerVersion.AutoDetect(connectString));
         }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Hero>()
-        //        .HasMany(h => h.Loots)
-        //        .WithOne(i => i.Hero);
-        //    modelBuilder.Entity<Hero>()
-        //        .Ignore(h => h.Equipments);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Party>()
+                .HasOne(p => p.Hero)
+                .WithOne(h => h.Party)
+                .HasForeignKey<Hero>(h => h.PartyId);
+
+            modelBuilder.Entity<Party>()
+                .HasOne(p => p.Story)
+                .WithOne(s => s.Party)
+                .HasForeignKey<LevelStory>(s => s.PartyId);
+
+            modelBuilder.Entity<HeroWeapon>()
+                .HasOne(h => h.Hero)
+                .WithMany(hw => hw.HeroWeapons)
+                .HasForeignKey(hi => hi.HeroId);
+
+            modelBuilder.Entity<HeroWeapon>()
+                .HasOne(w => w.Weapon)
+                .WithMany(hw => hw.HeroWeapons)
+                .HasForeignKey(wi => wi.WeaponId);
+
+            modelBuilder.Entity<HeroConsomable>()
+                .HasOne(h => h.Hero)
+                .WithMany(hc => hc.HeroConsomables)
+                .HasForeignKey(hi => hi.HeroId);
+
+            modelBuilder.Entity<HeroConsomable>()
+                .HasOne(c => c.Consomable)
+                .WithMany(hc => hc.HeroConsomables)
+                .HasForeignKey(ci => ci.ConsomableId);
+
+            modelBuilder.Entity<HeroEquipment>()
+                .HasOne(h => h.Hero)
+                .WithMany(he => he.HeroEquipments)
+                .HasForeignKey(hi => hi.HeroId);
+
+            modelBuilder.Entity<HeroEquipment>()
+                .HasOne(e => e.Equipment)
+                .WithMany(he => he.HeroEquipments)
+                .HasForeignKey(ei => ei.EquipmentId);
+        }
 
         public DbSet<Hero> HeroSet { get; set; }
 

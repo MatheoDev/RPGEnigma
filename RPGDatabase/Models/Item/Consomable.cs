@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using RPGDatabase.Models.Enum;
+using RPGDatabase.Models.ManyToMany;
 
 namespace RPGDatabase.Models.Item
 {
@@ -8,8 +10,6 @@ namespace RPGDatabase.Models.Item
      */
     public class Consomable : ItemCtrl
     {
-        public Consomable(string libelle, int pv, TypeEnum type, int price) : base(libelle, pv, type, price)
-        {
-        }
+        public List<HeroConsomable> HeroConsomables { get; set; }
     }
 }

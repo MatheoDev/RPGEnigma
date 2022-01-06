@@ -139,13 +139,25 @@ namespace RPGEditor.StaticListAdd
             List<Consomable> consomables = new List<Consomable>();
             for (int i = 1; i < 6; i++)
             {
-                Consomable consomable = new Consomable("Pomme", 10 * i, TypeEnum.FIRE, 10 * i);
+                Consomable consomable = new Consomable();
+                consomable.Libelle = "Pomme";
+                consomable.Pv = 10 * i;
+                consomable.Price = 10 * i;
+                consomable.Quantity = 1;
                 consomable.Level = i;
                 consomables.Add(consomable);
-                Consomable banane = new Consomable("Banane", 5 * i, TypeEnum.FIRE, 5 * i);
+                Consomable banane = new Consomable();
+                consomable.Libelle = "Banane";
+                consomable.Pv = 5 * i;
+                consomable.Price = 5 * i;
+                consomable.Quantity = 1;
                 banane.Level = i;
                 consomables.Add(banane);
-                Consomable soupe = new Consomable("Soupe", 15 * i, TypeEnum.FIRE, 15 * i);
+                Consomable soupe = new Consomable();
+                consomable.Libelle = "Soupe";
+                consomable.Pv = 15 * i;
+                consomable.Price = 15 * i;
+                consomable.Quantity = 1;
                 soupe.Level = i;
                 consomables.Add(soupe);
             }
@@ -157,11 +169,26 @@ namespace RPGEditor.StaticListAdd
             List<Weapon> weapons = new List<Weapon>();
             for (int i = 1; i < 6; i++)
             {
-                Weapon weapon = new Weapon("Epée de feu", 10 * i, TypeEnum.FIRE, 15 * i, 7 * i);
+                Weapon weapon = new Weapon();
+                weapon.Libelle = "Epée de feu";
+                weapon.Pv = 10 * i;
+                weapon.Type = TypeEnum.FIRE;
+                weapon.Price = 15 * i;
+                weapon.Power = 7 * i;
                 weapon.Level = i;
-                Weapon hache = new Weapon("Hache de feu", 5 * i, TypeEnum.FIRE, 10 * i, 10 * i);
+                Weapon hache = new Weapon();
+                hache.Libelle = "Hache de feu";
+                hache.Pv = 5 * i;
+                hache.Type = TypeEnum.FIRE;
+                hache.Price = 10 * i;
+                hache.Power = 10 * i;
                 hache.Level = i;
-                Weapon dague = new Weapon("Dague de feu", 4 * i, TypeEnum.FIRE, 15 * i, 15 * i);
+                Weapon dague = new Weapon();
+                dague.Libelle = "Dague de feu";
+                dague.Pv = 4 * i;
+                dague.Type = TypeEnum.FIRE;
+                dague.Price = 15 * i;
+                dague.Power = 15 * i;
                 dague.Level = i;
                 weapons.Add(weapon);
                 weapons.Add(hache);
@@ -169,11 +196,26 @@ namespace RPGEditor.StaticListAdd
             }
             for (int i = 1; i < 6; i++)
             {
-                Weapon weapon = new Weapon("Epée d'eau", 10 * i, TypeEnum.WATER, 15 * i, 7 * i);
+                Weapon weapon = new Weapon();
+                weapon.Libelle = "Epée de d'eau";
+                weapon.Pv = 10 * i;
+                weapon.Type = TypeEnum.WATER;
+                weapon.Price = 15 * i;
+                weapon.Power = 7 * i;
                 weapon.Level = i;
-                Weapon hache = new Weapon("Hache d'eau", 5 * i, TypeEnum.WATER, 10 * i, 10 * i);
+                Weapon hache = new Weapon();
+                hache.Libelle = "Hache de d'eau";
+                hache.Pv = 5 * i;
+                hache.Type = TypeEnum.WATER;
+                hache.Price = 10 * i;
+                hache.Power = 10 * i;
                 hache.Level = i;
-                Weapon dague = new Weapon("Dague d'eau", 4 * i, TypeEnum.WATER, 15 * i, 15 * i);
+                Weapon dague = new Weapon();
+                dague.Libelle = "Dague de d'eau";
+                dague.Pv = 4 * i;
+                dague.Type = TypeEnum.WATER;
+                dague.Price = 15 * i;
+                dague.Power = 15 * i;
                 dague.Level = i;
                 weapons.Add(weapon);
                 weapons.Add(hache);
@@ -181,11 +223,26 @@ namespace RPGEditor.StaticListAdd
             }
             for (int i = 1; i < 6; i++)
             {
-                Weapon weapon = new Weapon("Epée de vent", 10 * i, TypeEnum.WIND, 15 * i, 100);
+                Weapon weapon = new Weapon();
+                weapon.Libelle = "Epée de vent";
+                weapon.Pv = 10 * i;
+                weapon.Type = TypeEnum.WIND;
+                weapon.Price = 15 * i;
+                weapon.Power = 7 * i;
                 weapon.Level = i;
-                Weapon hache = new Weapon("Hache de vent", 5 * i, TypeEnum.WIND, 10 * i, 10 * i);
+                Weapon hache = new Weapon();
+                hache.Libelle = "Hache de vent";
+                hache.Pv = 5 * i;
+                hache.Type = TypeEnum.WIND;
+                hache.Price = 10 * i;
+                hache.Power = 10 * i;
                 hache.Level = i;
-                Weapon dague = new Weapon("Dague de vent", 4 * i, TypeEnum.WIND, 15 * i, 15 * i);
+                Weapon dague = new Weapon();
+                dague.Libelle = "Dague de vent";
+                dague.Pv = 4 * i;
+                dague.Type = TypeEnum.WIND;
+                dague.Price = 15 * i;
+                dague.Power = 15 * i;
                 dague.Level = i;
                 weapons.Add(weapon);
                 weapons.Add(hache);
@@ -193,11 +250,26 @@ namespace RPGEditor.StaticListAdd
             }
             for (int i = 1; i < 6; i++)
             {
-                Weapon weapon = new Weapon("Epée de roche", 10 * i, TypeEnum.ROCK, 15 * i, 100);
+                Weapon weapon = new Weapon();
+                weapon.Libelle = "Epée de roche";
+                weapon.Pv = 10 * i;
+                weapon.Type = TypeEnum.ROCK;
+                weapon.Price = 15 * i;
+                weapon.Power = 7 * i;
                 weapon.Level = i;
-                Weapon hache = new Weapon("Hache de roche", 5 * i, TypeEnum.ROCK, 10 * i, 10 * i);
+                Weapon hache = new Weapon();
+                hache.Libelle = "Hache de roche";
+                hache.Pv = 5 * i;
+                hache.Type = TypeEnum.ROCK;
+                hache.Price = 10 * i;
+                hache.Power = 10 * i;
                 hache.Level = i;
-                Weapon dague = new Weapon("Dague de roche", 4 * i, TypeEnum.ROCK, 15 * i, 15 * i);
+                Weapon dague = new Weapon();
+                dague.Libelle = "Dague de roche";
+                dague.Pv = 4 * i;
+                dague.Type = TypeEnum.ROCK;
+                dague.Price = 15 * i;
+                dague.Power = 15 * i;
                 dague.Level = i;
                 weapons.Add(weapon);
                 weapons.Add(hache);
@@ -211,19 +283,34 @@ namespace RPGEditor.StaticListAdd
             List<Equipment> equipments = new List<Equipment>();
             for (int i = 1; i < 6; i++)
             {
-                Equipment casque = new Equipment("Casque", 10 * i, TypeEnum.FIRE, 20 * i);
+                Equipment casque = new Equipment();
+                casque.Libelle = "Casque";
+                casque.Pv = 10 * i;
+                casque.Price = 20 * i;
                 casque.Level = i;
                 equipments.Add(casque);
-                Equipment gilet = new Equipment("Gilet", 10 * i, TypeEnum.FIRE, 20 * i);
+                Equipment gilet = new Equipment();
+                gilet.Libelle = "Gilet";
+                gilet.Pv = 10 * i;
+                gilet.Price = 20 * i;
                 gilet.Level = i;
                 equipments.Add(gilet);
-                Equipment pantalon = new Equipment("Pantalon", 10 * i, TypeEnum.FIRE, 20 * i);
+                Equipment pantalon = new Equipment();
+                pantalon.Libelle = "Pantalon";
+                pantalon.Pv = 10 * i;
+                pantalon.Price = 20 * i;
                 pantalon.Level = i;
                 equipments.Add(pantalon);
-                Equipment shoes = new Equipment("Chaussure", 10 * i, TypeEnum.FIRE, 20 * i);
+                Equipment shoes = new Equipment();
+                shoes.Libelle = "Chaussure";
+                shoes.Pv = 10 * i;
+                shoes.Price = 20 * i;
                 shoes.Level = i;
                 equipments.Add(shoes);
-                Equipment shield = new Equipment("Bouclier", 10 * i, TypeEnum.FIRE, 20 * i);
+                Equipment shield = new Equipment();
+                shield.Libelle = "Bouclier";
+                shield.Pv = 10 * i;
+                shield.Price = 20 * i;
                 shield.Level = i;
                 equipments.Add(shield);
             }

@@ -22,19 +22,5 @@ namespace RPGDatabase.Models.Item
         public int Level { get; set; }
 
         public TypeEnum Type { get; set; }
-
-        //public int HeroId { get; set; }
-
-        //public Hero Hero { get; set; }
-
-        public ItemCtrl(string libelle, int pv, TypeEnum type, int price)
-        {
-            Pv = pv;
-            Libelle = libelle;
-            Quantity = 1;
-            Level = 1;
-            Type = type;
-            Price = price;
-        }
     }
 }
