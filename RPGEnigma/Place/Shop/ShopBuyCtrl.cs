@@ -24,10 +24,10 @@ namespace RPGEnigma.Place.Shop
 
         public void InitItem()
         {
-            _items = GetRequest.GetItemToBuy(GameHome.Party.Hero.Level);
+            _items = GetRequest.GetItemToBuy(GameHome.Hero.Level);
             Console.Clear();
             Console.WriteLine("--- ACHAT ---");
-            Console.WriteLine("Argent : {0}\n", GameHome.Party.Hero.Money);
+            Console.WriteLine("Argent : {0}\n", GameHome.Hero.Money);
             ManageMenu();
         }
 
@@ -67,7 +67,7 @@ namespace RPGEnigma.Place.Shop
          */
         private void ProcessBuying(ItemCtrl item)
         {
-            if (GameHome.Party.Hero.Money < item.Price)
+            if (GameHome.Hero.Money < item.Price)
             {
                 Console.Clear();
                 Console.WriteLine("Vous n'avez pas assez d'argent pour acheter cet item\nAppuyer sur une touche pour continuer.");
@@ -75,34 +75,53 @@ namespace RPGEnigma.Place.Shop
                 InitItem();
             } else
             {
-                if (GameHome.Party.Hero.AsNotEquipment(item))
+                if (item is Consomable)
                 {
-                    if (item is Consomable)
-                    {
-                        if (GameHome.Party.Hero.AsNotItem(item) && !GameHome.Party.Hero.IsNotFull())
-                        {
-                            ResetShop("Inventaire plein");
-                        } else {
-                            GameHome.Party.Hero.AddConsomable(item);
-                            GameHome.Party.Hero.Money = GameHome.Party.Hero.Money - item.Price;
-                        }
-                    } else if (item is Equipment)
-                    {
-                        GameHome.Party.Hero.AddEquipment(item);
-                        GameHome.Party.Hero.Money = GameHome.Party.Hero.Money - item.Price;
-                    } else
-                    {
-                        if (GameHome.Party.Hero.IsNotFull())
-                        {
-                            GameHome.Party.Hero.AddLoot(item);
-                            GameHome.Party.Hero.Money = GameHome.Party.Hero.Money - item.Price;
-                        } else { ResetShop("Inventaire plein"); }
-                    }
-                    ResetShop("Vous avez acheté cet item : "+item.Libelle);
+                    ProcessBuyingConsom(item);
+                } else if (item is Weapon)
+                {
+                    ProcessBuyingWeapon(item);
                 } else
                 {
-                    ResetShop("Vous avez déjà cet item");
+                    ProcessBuyingEquipt(item);
                 }
+            }
+        }
+
+        private void ProcessBuyingWeapon(ItemCtrl item)
+        {
+            if (GameHome.Hero.HaveWeapon(item.Id))
+            {
+                ResetShop("Vous avez déjà acheté cet item");
+            } else
+            {
+                GetRequest.SetWeaponHero(item.Id, GameHome.Hero.Id);
+                ResetShop("Vous avez acheté "+item.Libelle);
+            }
+        }
+
+        private void ProcessBuyingEquipt(ItemCtrl item)
+        {
+            if (GameHome.Hero.HaveEquipment(item.Id))
+            {
+                ResetShop("Vous avez déjà acheté cet item");
+            }
+            else
+            {
+                GetRequest.SetEquipmentHero(item.Id, GameHome.Hero.Id);
+                ResetShop("Vous avez acheté " + item.Libelle);
+            }
+        }
+
+        private void ProcessBuyingConsom(ItemCtrl item)
+        {
+            if (GameHome.Hero.HaveConsommable(item.Id))
+            {
+                ResetShop("Vous avez déjà acheté cet item");
+            } else
+            {
+                GetRequest.SetConsomableHero(item.Id, GameHome.Hero.Id);
+                ResetShop("Vous avez acheté " + item.Libelle);
             }
         }
 

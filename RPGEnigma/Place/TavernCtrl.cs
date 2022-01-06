@@ -48,7 +48,6 @@ namespace RPGEnigma.Place
             if (action == 0)
             {
                 GameHome.Party.Hero.Money = GameHome.Party.Hero.Money - 25;
-                GameHome.Party.Story.Level = 3;
                 GameHome.Party.Hero.Pv = GameHome.Party.Hero.PvMax;
                 Console.Clear();
                 Console.WriteLine("Vous vous êtes reposé pour 25$\nAppuyez sur une touche pour continuer");

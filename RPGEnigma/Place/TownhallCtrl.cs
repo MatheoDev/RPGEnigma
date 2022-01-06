@@ -44,7 +44,7 @@ namespace RPGEnigma.Place
             int action = ConsoleUtils.AskPlayerReturnInt("Voulez vous sauvegarder ?", 0, 2);
             if (action == 0)
             {
-                GetRequest.SavePart(GameHome.Party.Hero);
+                GetRequest.SavePart(GameHome.Party.Hero, GameHome.Party.Story);
                 Console.Clear();
                 Console.WriteLine("Vous avez sauvegardé la partie\nAppuyez sur une touche pour continuer");
                 Console.Read();

@@ -21,79 +21,71 @@ namespace RPGDatabase.Models.Character
 
         public List<HeroWeapon> HeroWeapons { get; set; }
 
-        //public bool AsNotEquipment(ItemCtrl item)
-        //{
-        //    foreach (Equipment equipment in Equipments)
-        //    {
-        //        if (equipment.Libelle == item.Libelle)
-        //        {
-        //            return false;
-        //        }
-        //    }
+        public Hero()
+        {
+            HeroConsomables = new List<HeroConsomable>();
+            HeroEquipments = new List<HeroEquipment>();
+            HeroWeapons = new List<HeroWeapon>();
+        }
 
-        //    return true;
-        //}
+        public bool HaveEquipment(int itemId)
+        {
+            foreach (HeroEquipment equipment in HeroEquipments)
+            {
+                if (equipment.EquipmentId == itemId)
+                {
+                    return true;
+                }
+            }
 
-        //public bool AsNotItem(ItemCtrl item)
-        //{
-        //    foreach (ItemCtrl loot in Loots)
-        //    {
-        //        if (loot.Libelle == item.Libelle)
-        //        {
-        //            return false;
-        //        }
-        //    }
+            return false;
+        }
 
-        //    return true;
-        //}
+        public bool HaveWeapon(int itemId)
+        {
+            foreach (HeroWeapon weapon in HeroWeapons)
+            {
+                if (weapon.WeaponId == itemId)
+                {
+                    return true;
+                }
+            }
 
-        //public bool IsNotFull()
-        //{
-        //    if (Loots.Count == 7)
-        //    {
-        //        return false;
-        //    }
-        //    return true;
-        //}
+            return false;
+        }
 
-        //public void AddConsomable(ItemCtrl item)
-        //{
-        //    if (AsNotItem(item))
-        //    {
-        //        AddLoot(item);
-        //    }
-        //    else
-        //    {
-        //        foreach (ItemCtrl loot in Consomable)
-        //        {
-        //            if (loot.Libelle == item.Libelle)
-        //            {
-        //                loot.Quantity = loot.Quantity + 1;
-        //            }
-        //        }
-        //    }
-        //}
+        public bool HaveConsommable(int itemId)
+        {
+            foreach (HeroConsomable consomable in HeroConsomables)
+            {
+                if (consomable.ConsomableId == itemId)
+                {
+                    return true;
+                }
+            }
 
-        //public void AddEquipment(ItemCtrl equipment)
-        //{
-        //    if (AsNotEquipment(equipment))
-        //    {
-        //        Equipments.Add((Equipment)equipment);
-        //    }
-        //}
+            return false;
+        }
 
-        //public void AddLoot(ItemCtrl item)
-        //{
-        //    if (IsNotFull())
-        //    {
-        //        Loots.Add(item);
-        //    }
-        //}
+        public void AddEquipment(HeroEquipment equipment)
+        {
+            HeroEquipments.Add(equipment);
+        }
+
+        public void AddConsomable(HeroConsomable consomable)
+        {
+            HeroConsomables.Add(consomable);
+        }
+
+        public void AddWeapon(HeroWeapon weapon)
+        {
+            HeroWeapons.Add(weapon);
+        }
 
         //public void RemoveConsommable(ItemCtrl item)
         //{
         //    bool remove = false;
-        //    foreach (ItemCtrl loot in Loots)
+        //    foreach (ItemCtrl loot in Consom)
         //    {
         //        if (loot.Libelle == item.Libelle)
         //        {

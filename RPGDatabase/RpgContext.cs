@@ -76,5 +76,11 @@ namespace RPGDatabase
         public DbSet<Weapon> WeaponSet { get; set; }
 
         public DbSet<LevelStory> StorySet { get; set; }
+
+        public DbSet<HeroWeapon> HeroWeapon { get; set; }
+
+        public DbSet<HeroEquipment> HeroEquipment { get; set; }
+
+        public DbSet<HeroConsomable> HeroConsomable { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace RPGEnigma.Game
         public GameHome(Party party)
         {
             Party = party;
+            Hero = GetRequest.GetHero(party.Hero.Id);
             RouteCtrl._home.InitItem();
         }
     }

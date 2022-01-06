@@ -13,7 +13,9 @@ namespace RPGEditor.StaticListAdd
             List<Monster> monsters = new List<Monster>();
             for (int i = 1; i < 6; i++)
             {
-                Monster monster = new Monster("Bébé dragon d'eau", TypeEnum.WATER);
+                Monster monster = new Monster();
+                monster.Name = "Bébé dragon d'eau";
+                monster.Type = TypeEnum.WATER;
                 monster.Level = i;
                 monster.PvMax = 60 * i;
                 monster.Pv = monster.PvMax;
@@ -21,7 +23,9 @@ namespace RPGEditor.StaticListAdd
                 monster.Dexterity = 3 * i;
                 monster.Money = 10 * i;
                 monster.ExperienceLvl = 7 * i;
-                Monster dragon = new Monster("Dragon d'eau", TypeEnum.WATER);
+                Monster dragon = new Monster();
+                dragon.Name = "Dragon d'eau";
+                dragon.Type = TypeEnum.WATER;
                 dragon.Level = i;
                 dragon.PvMax = 90 * i;
                 dragon.Pv = dragon.PvMax;
@@ -29,7 +33,9 @@ namespace RPGEditor.StaticListAdd
                 dragon.Dexterity = 6 * i;
                 dragon.Money = 15 * i;
                 dragon.ExperienceLvl = 10 * i;
-                Monster dragonBoss = new Monster("Dragon Boss d'eau", TypeEnum.WATER);
+                Monster dragonBoss = new Monster();
+                dragonBoss.Name = "Dragon Boss d'eau";
+                dragonBoss.Type = TypeEnum.WATER;
                 dragonBoss.Level = i;
                 dragonBoss.PvMax = 110 * i;
                 dragonBoss.Pv = dragonBoss.PvMax;
@@ -43,7 +49,9 @@ namespace RPGEditor.StaticListAdd
             }
             for (int i = 1; i < 6; i++)
             {
-                Monster monster = new Monster("Bébé dragon de feu", TypeEnum.FIRE);
+                Monster monster = new Monster();
+                monster.Name = "Bébé dragon de feu";
+                monster.Type = TypeEnum.FIRE;
                 monster.Level = i;
                 monster.PvMax = 60 * i;
                 monster.Pv = monster.PvMax;
@@ -51,7 +59,9 @@ namespace RPGEditor.StaticListAdd
                 monster.Dexterity = 3 * i;
                 monster.Money = 10 * i;
                 monster.ExperienceLvl = 7 * i;
-                Monster dragon = new Monster("Dragon de feu", TypeEnum.FIRE);
+                Monster dragon = new Monster();
+                dragon.Name = "Dragon de feu";
+                dragon.Type = TypeEnum.FIRE;
                 dragon.Level = i;
                 dragon.PvMax = 90 * i;
                 dragon.Pv = dragon.PvMax;
@@ -59,7 +69,9 @@ namespace RPGEditor.StaticListAdd
                 dragon.Dexterity = 6 * i;
                 dragon.Money = 15 * i;
                 dragon.ExperienceLvl = 10 * i;
-                Monster dragonBoss = new Monster("Dragon Boss de feu", TypeEnum.FIRE);
+                Monster dragonBoss = new Monster();
+                dragonBoss.Name = "Dragon Boss de feu";
+                dragonBoss.Type = TypeEnum.FIRE;
                 dragonBoss.Level = i;
                 dragonBoss.PvMax = 110 * i;
                 dragonBoss.Pv = dragonBoss.PvMax;
@@ -73,7 +85,9 @@ namespace RPGEditor.StaticListAdd
             }
             for (int i = 1; i < 6; i++)
             {
-                Monster monster = new Monster("Bébé dragon de roche", TypeEnum.ROCK);
+                Monster monster = new Monster();
+                monster.Name = "Bébé dragon de roche";
+                monster.Type = TypeEnum.ROCK;
                 monster.Level = i;
                 monster.PvMax = 60 * i;
                 monster.Pv = monster.PvMax;
@@ -81,7 +95,9 @@ namespace RPGEditor.StaticListAdd
                 monster.Dexterity = 3 * i;
                 monster.Money = 10 * i;
                 monster.ExperienceLvl = 7 * i;
-                Monster dragon = new Monster("Dragon de roche", TypeEnum.ROCK);
+                Monster dragon = new Monster();
+                dragon.Name = "Dragon de roche";
+                dragon.Type = TypeEnum.ROCK;
                 dragon.Level = i;
                 dragon.PvMax = 90 * i;
                 dragon.Pv = dragon.PvMax;
@@ -89,7 +105,9 @@ namespace RPGEditor.StaticListAdd
                 dragon.Dexterity = 6 * i;
                 dragon.Money = 15 * i;
                 dragon.ExperienceLvl = 10 * i;
-                Monster dragonBoss = new Monster("Dragon Boss de roche", TypeEnum.ROCK);
+                Monster dragonBoss = new Monster();
+                dragonBoss.Name = "Dragon Boss de roche";
+                dragonBoss.Type = TypeEnum.ROCK;
                 dragonBoss.Level = i;
                 dragonBoss.PvMax = 110 * i;
                 dragonBoss.Pv = dragonBoss.PvMax;
@@ -103,7 +121,9 @@ namespace RPGEditor.StaticListAdd
             }
             for (int i = 1; i < 6; i++)
             {
-                Monster monster = new Monster("Bébé dragon de vent", TypeEnum.WIND);
+                Monster monster = new Monster();
+                monster.Name = "Bébé dragon de vent";
+                monster.Type = TypeEnum.WIND;
                 monster.Level = i;
                 monster.PvMax = 60 * i;
                 monster.Pv = monster.PvMax;
@@ -111,7 +131,9 @@ namespace RPGEditor.StaticListAdd
                 monster.Dexterity = 3 * i;
                 monster.Money = 10 * i;
                 monster.ExperienceLvl = 7 * i;
-                Monster dragon = new Monster("Dragon de vent", TypeEnum.WIND);
+                Monster dragon = new Monster();
+                dragon.Name = "Dragon de vent";
+                dragon.Type = TypeEnum.WIND;
                 dragon.Level = i;
                 dragon.PvMax = 90 * i;
                 dragon.Pv = dragon.PvMax;
@@ -119,7 +141,9 @@ namespace RPGEditor.StaticListAdd
                 dragon.Dexterity = 6 * i;
                 dragon.Money = 15 * i;
                 dragon.ExperienceLvl = 10 * i;
-                Monster dragonBoss = new Monster("Dragon Boss de vent", TypeEnum.WIND);
+                Monster dragonBoss = new Monster();
+                dragonBoss.Name = "Dragon Boss de vent";
+                dragonBoss.Type = TypeEnum.WIND;
                 dragonBoss.Level = i;
                 dragonBoss.PvMax = 110 * i;
                 dragonBoss.Pv = dragonBoss.PvMax;
@@ -147,17 +171,17 @@ namespace RPGEditor.StaticListAdd
                 consomable.Level = i;
                 consomables.Add(consomable);
                 Consomable banane = new Consomable();
-                consomable.Libelle = "Banane";
-                consomable.Pv = 5 * i;
-                consomable.Price = 5 * i;
-                consomable.Quantity = 1;
+                banane.Libelle = "Banane";
+                banane.Pv = 5 * i;
+                banane.Price = 5 * i;
+                banane.Quantity = 1;
                 banane.Level = i;
                 consomables.Add(banane);
                 Consomable soupe = new Consomable();
-                consomable.Libelle = "Soupe";
-                consomable.Pv = 15 * i;
-                consomable.Price = 15 * i;
-                consomable.Quantity = 1;
+                soupe.Libelle = "Soupe";
+                soupe.Pv = 15 * i;
+                soupe.Price = 15 * i;
+                soupe.Quantity = 1;
                 soupe.Level = i;
                 consomables.Add(soupe);
             }

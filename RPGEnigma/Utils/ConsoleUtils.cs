@@ -95,11 +95,11 @@ namespace RPGEnigma.Utils
         public static void WriteInfosHero()
         {
             Console.WriteLine("Pv: {0}/{1}\nNiveau: {2} | {3}Xp\nArgent: {4}\n",
-                GameHome.Party.Hero.Pv, GameHome.Party.Hero.PvMax, GameHome.Party.Hero.Level,
-                GameHome.Party.Hero.ExperienceLvl, GameHome.Party.Hero.Money);
+                GameHome.Hero.Pv, GameHome.Hero.PvMax, GameHome.Hero.Level,
+                GameHome.Hero.ExperienceLvl, GameHome.Hero.Money);
             Console.WriteLine("Force: {0}\nDextérité: {1}\nIntelligence: {2}\nDiscrétion: {3}\n",
-                GameHome.Party.Hero.Power, GameHome.Party.Hero.Dexterity,
-                GameHome.Party.Hero.Intelligence, GameHome.Party.Hero.Discretion);
+                GameHome.Hero.Power, GameHome.Hero.Dexterity,
+                GameHome.Hero.Intelligence, GameHome.Hero.Discretion);
         }
     }
 }
