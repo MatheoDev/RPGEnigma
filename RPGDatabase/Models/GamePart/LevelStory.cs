@@ -15,8 +15,8 @@ namespace RPGDatabase.Models.GamePart
 
         public int Pourcentage { get; set; }
 
-        public LevelStory()
-        {
-        }
+        public int PartyId { get; set; }
+
+        public Party Party { get; set; }
     }
 }

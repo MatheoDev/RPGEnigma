@@ -18,6 +18,7 @@
     <None Remove="Models\GamePart\" />
     <None Remove="Models\Item\" />
     <None Remove="Models\Enum\" />
+    <None Remove="Models\ManyToMany\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -25,6 +26,7 @@
     <Folder Include="Models\GamePart\" />
     <Folder Include="Models\Item\" />
     <Folder Include="Models\Enum\" />
+    <Folder Include="Models\ManyToMany\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.2" />

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using RPGDatabase.Models.GamePart;
 using RPGDatabase.Models.Item;
+using RPGDatabase.Models.ManyToMany;
 
 namespace RPGDatabase.Models.Character
 {
@@ -9,104 +11,95 @@ namespace RPGDatabase.Models.Character
      */
     public class Hero : CharacterCtrl
     {
-        public List<Equipment> Equipments { get; set; }
+        public int PartyId { get; set; }
 
-        public Hero() : base()
+        public Party Party { get; set; }
+
+        public List<HeroEquipment> HeroEquipments { get; set; }
+
+        public List<HeroConsomable> HeroConsomables { get; set; }
+
+        public List<HeroWeapon> HeroWeapons { get; set; }
+
+        public Hero()
         {
-            Equipments = new List<Equipment>();
+            HeroConsomables = new List<HeroConsomable>();
+            HeroEquipments = new List<HeroEquipment>();
+            HeroWeapons = new List<HeroWeapon>();
         }
 
-        public Hero(string name) : base(name)
+        public bool HaveEquipment(int itemId)
         {
-            Equipments = new List<Equipment>();
-        }
-
-        public bool AsNotEquipment(ItemCtrl item)
-        {
-            foreach (Equipment equipment in Equipments)
+            foreach (HeroEquipment equipment in HeroEquipments)
             {
-                if (equipment.Libelle == item.Libelle)
+                if (equipment.EquipmentId == itemId)
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
 
-        public bool AsNotItem(ItemCtrl item)
+        public bool HaveWeapon(int itemId)
         {
-            foreach (ItemCtrl loot in Loots)
+            foreach (HeroWeapon weapon in HeroWeapons)
             {
-                if (loot.Libelle == item.Libelle)
+                if (weapon.WeaponId == itemId)
                 {
-                    return false;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
 
-        public bool IsNotFull()
+        public bool HaveConsommable(int itemId)
         {
-            if (Loots.Count == 7)
+            foreach (HeroConsomable consomable in HeroConsomables)
             {
-                return false;
-            }
-            return true;
-        }
-
-        public void AddConsomable(ItemCtrl item)
-        {
-            if (AsNotItem(item))
-            {
-                AddLoot(item);
-            } else
-            {
-                foreach (ItemCtrl loot in Loots)
+                if (consomable.ConsomableId == itemId)
                 {
-                    if (loot.Libelle == item.Libelle)
-                    {
-                        loot.Quantity = loot.Quantity + 1;
-                    }
+                    return true;
                 }
             }
+
+            return false;
         }
 
-        public void AddEquipment(ItemCtrl equipment)
+        public void AddEquipment(HeroEquipment equipment)
         {
-            if (AsNotEquipment(equipment))
-            {
-                Equipments.Add((Equipment)equipment);
-            }
+            HeroEquipments.Add(equipment);
         }
 
-        public void AddLoot(ItemCtrl item)
+        public void AddConsomable(HeroConsomable consomable)
         {
-            if (IsNotFull())
-            {
-                Loots.Add(item);
-            }
+            HeroConsomables.Add(consomable);
         }
 
-        public void RemoveConsommable(ItemCtrl item)
+        public void AddWeapon(HeroWeapon weapon)
         {
-            bool remove = false;
-            foreach (ItemCtrl loot in Loots)
-            {
-                if (loot.Libelle == item.Libelle)
-                {
-                    if (loot.Quantity > 1)
-                    {
-                        item.Quantity = item.Quantity - 1;
-                        remove = true;
-                    }
-                }
-            }
-            if (!remove)
-            {
-                Loots.Remove(item);
-            }
+            HeroWeapons.Add(weapon);
         }
+
+        //public void RemoveConsommable(ItemCtrl item)
+        //{
+        //    bool remove = false;
+        //    foreach (ItemCtrl loot in Consom)
+        //    {
+        //        if (loot.Libelle == item.Libelle)
+        //        {
+        //            if (loot.Quantity > 1)
+        //            {
+        //                item.Quantity = item.Quantity - 1;
+        //                remove = true;
+        //            }
+        //        }
+        //    }
+        //    if (!remove)
+        //    {
+        //        Loots.Remove(item);
+        //    }
+        //}
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using RPGDatabase.Models.Enum;
+using RPGDatabase.Models.ManyToMany;
 
 namespace RPGDatabase.Models.Item
 {
@@ -10,9 +12,6 @@ namespace RPGDatabase.Models.Item
     {
         public int Power { get; set; }
 
-        public Weapon(string libelle, int pv, TypeEnum type, int price, int power) : base(libelle, pv, type, price)
-        {
-            Power = power;
-        }
+        public List<HeroWeapon> HeroWeapons { get; set; }
     }
 }

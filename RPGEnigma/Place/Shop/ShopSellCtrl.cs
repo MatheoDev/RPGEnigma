@@ -15,6 +15,8 @@ namespace RPGEnigma.Place.Shop
     {
         private List<string> _menuString;
 
+        private List<ItemCtrl> _itemsToSell;
+
         public ShopSellCtrl()
         {
             name = "Vendre";
@@ -36,14 +38,7 @@ namespace RPGEnigma.Place.Shop
         private void ManageMenu()
         {
             _menuString = new List<string>();
-            foreach (ItemCtrl item in GameHome.Party.Hero.Loots)
-            {
-                _menuString.Add(item.Libelle+" -> "+item.Price);
-            }
-            foreach (ItemCtrl item in GameHome.Party.Hero.Equipments)
-            {
-                _menuString.Add(item.Libelle + " -> " + item.Price);
-            }
+            _itemsToSell = GetRequest.GiveItemsHero(_menuString, GameHome.Hero);
             _menuString.Add("Retour");
             MenuCtrl menu = new MenuCtrl(_menuString);
             menu.BuildMenu();
@@ -61,14 +56,7 @@ namespace RPGEnigma.Place.Shop
                 RouteCtrl._shop.InitItem();
             } else
             {
-                if (action >= GameHome.Party.Hero.Loots.Count)
-                {
-                    int index = GameHome.Party.Hero.Loots.Count == 0 ? action : action - GameHome.Party.Hero.Loots.Count;
-                    ProcessSelling(GameHome.Party.Hero.Equipments[index]);
-                } else
-                {
-                    ProcessSelling(GameHome.Party.Hero.Loots[action]);
-                }
+                ProcessSelling(_itemsToSell[action]);
             }
         }
 
@@ -77,21 +65,15 @@ namespace RPGEnigma.Place.Shop
          */
         private void ProcessSelling(ItemCtrl item)
         {
-            if (item is Equipment)
+            if (item is Consomable)
             {
-                GameHome.Party.Hero.Equipments.Remove((Equipment)item);
-                ///GetRequest.RemoveEquipment(item);
-                GameHome.Party.Hero.Money = GameHome.Party.Hero.Money + item.Price;
-            } else if (item is Consomable)
+                GetRequest.RemoveConsomableHero(item.Id, GameHome.Hero.Id);
+            } else if (item is Weapon)
             {
-                GameHome.Party.Hero.RemoveConsommable(item);
-                ///GetRequest.RemoveItem(item);
-                GameHome.Party.Hero.Money = GameHome.Party.Hero.Money + item.Price;
+                GetRequest.RemoveWeaponHero(item.Id, GameHome.Hero.Id);
             } else
             {
-                GameHome.Party.Hero.Loots.Remove(item);
-                ///GetRequest.RemoveItem(item);
-                GameHome.Party.Hero.Money = GameHome.Party.Hero.Money + item.Price;
+                GetRequest.RemoveEquipmentHero(item.Id, GameHome.Hero.Id);
             }
             ResetShop("Vous avez vendu cet item : " + item.Libelle);
         }
