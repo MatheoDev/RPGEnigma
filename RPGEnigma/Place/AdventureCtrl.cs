@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RPGDatabase.Models.Character;
 using RPGDatabase.Models.Enum;
+using RPGDatabase.Models.Item;
 using RPGEnigma.Game;
 using RPGEnigma.Game.Naration;
 using RPGEnigma.Menu;
@@ -30,9 +31,6 @@ namespace RPGEnigma.Place
         {
             Console.Clear();
             Console.WriteLine("--- AVENTURE ---");
-            ConsoleUtils.WriteInfosStory();
-            ConsoleUtils.WriteInfosHero();
-            DefineMonsterToFight();
             if (GameHome.Party.Story.Pourcentage == 100)
             {
                 Console.Clear();
@@ -48,16 +46,19 @@ namespace RPGEnigma.Place
          */
         public void Game()
         {
+            DefineMonsterToFight();
+            NarationDialogue.RecapOfTheRound(currentMonster, GameHome.Hero.Name);
             bool isOver = false;
             int round = 0;
-            NarationDialogue.RecapOfTheRound(currentMonster, GameHome.Hero.Name);
-            Console.Clear();
             while (!isOver)
             {
-                if (GameHome.Hero.Pv == 0)
+                Console.Clear();
+                ConsoleUtils.WriteInfosStory();
+                ConsoleUtils.WriteInfosCombat(currentMonster, GameHome.Hero);
+                if (GameHome.Hero.Pv <= 0)
                 {
                     isOver = true;
-                } else if (currentMonster.Pv == 0)
+                } else if (currentMonster.Pv <= 0)
                 {
                     isOver = true;
                 }
@@ -65,10 +66,15 @@ namespace RPGEnigma.Place
                 if (!isOver && round % 2 == 0)
                 {
                     // HERO ACTION -> ATTAQUE OU SE SOIGNE
+                    // function to do an action choose item to fight
+                    InteractionOfPlayer();
                 } else if(!isOver && round % 2 != 0)
                 {
                     // MONSTER ACTION -> ATTAQUE
+                    // function to attaque with the monster
+                    InteractionOfBot();
                 }
+                round = round + 1;
             }
 
             if (GameHome.Hero.Pv != 0)
@@ -101,6 +107,61 @@ namespace RPGEnigma.Place
             {
                 currentMonster = monsters.Find(m => m.Name.Contains("Boss"));
             }
+        }
+
+        public void InteractionOfPlayer()
+        {
+            Console.WriteLine("0: Attaquer\n1: Se soigner");
+            int action = ConsoleUtils.AskPlayerReturnInt("Attaquer ou se restaurer de la vie?", 0, 2);
+            Console.WriteLine("");
+            if (action == 0)
+            {
+                if (GameHome.Hero.HeroWeapons.Count > 0)
+                {
+                    List<string> menu = new List<string>();
+                    List<Weapon> items = GetRequest.GiveWeapHeroFight(menu, GameHome.Hero);
+                    MenuCtrl menuCtrl = new MenuCtrl(menu);
+                    Console.WriteLine("Liste:\n");
+                    menuCtrl.BuildMenu();
+                    int actionWeap = ConsoleUtils.AskPlayerReturnInt("Quel armes voulez vous utiliser?", 0, items.Count);
+                    currentMonster.Pv = currentMonster.Pv - (GameHome.Hero.Power + items[actionWeap].Power);
+                } else
+                {
+                    currentMonster.Pv = currentMonster.Pv - GameHome.Hero.Power;
+                }
+                ConsoleUtils.WriteLetterByLetter("Vous attaquez le dragon!");
+                Console.Read();
+            } else
+            {
+                List<string> menu = new List<string>();
+                List<ItemCtrl> items = GetRequest.GiveConsoHeroFight(menu, GameHome.Hero);
+                MenuCtrl menuCtrl = new MenuCtrl(menu);
+                if (items.Count == 0)
+                {
+                    Console.WriteLine("Vous n'avez pas de soin");
+                    InteractionOfPlayer();
+                } else
+                {
+                    Console.WriteLine("Liste:\n");
+                    menuCtrl.BuildMenu();
+                    int actionConso = ConsoleUtils.AskPlayerReturnInt("Que voulez vous manger?", 0, items.Count);
+                    if (GameHome.Hero.Pv + items[actionConso].Pv > GameHome.Hero.PvMax)
+                    {
+                        GameHome.Hero.Pv = GameHome.Hero.PvMax;
+                    }
+                    else
+                    {
+                        GameHome.Hero.Pv = GameHome.Hero.Pv + items[actionConso].Pv;
+                    }
+                }
+            }
+        }
+
+        public void InteractionOfBot()
+        {
+            ConsoleUtils.WriteLetterByLetter("Le dragon vous attaque!");
+            Console.Read();
+            GameHome.Hero.Pv = GameHome.Hero.Pv - currentMonster.Power;
         }
 
         /**

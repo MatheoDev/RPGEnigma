@@ -24,7 +24,7 @@ namespace RPGEnigma.Game.Naration
             "Appuyer sur une touche pour continuer.";
 
         private static string TEXT_PRESENTATION_ROUND = ":hero! Te voici sur l'île des dragon de :type.\n" +
-            "Il te faudra dans un premier temps battre le(s) :monster pour pouvoir passer au niveau suivant.\n" +
+            "Il te faudra battre le :monster pour pouvoir passer au niveau suivant.\n" +
             "Je te souhaite bon courage, LEZGOOO...\n" +
             "Appuyer sur une touche pour continuer.";
 

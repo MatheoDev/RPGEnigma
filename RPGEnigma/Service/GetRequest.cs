@@ -256,6 +256,44 @@ namespace RPGEnigma.Service
         }
 
         /**
+         * Recupère les consommables du Hero pour combat 
+         */
+        public static List<ItemCtrl> GiveConsoHeroFight(List<string> menu, Hero hero)
+        {
+
+            List<ItemCtrl> items = GetItemToBuy(hero.Level);
+            List<ItemCtrl> itemsHero = new List<ItemCtrl>();
+            foreach (HeroConsomable conso in hero.HeroConsomables)
+            {
+                ItemCtrl item = items.Find(i => i.Id == conso.ConsomableId);
+                itemsHero.Add(item);
+                menu.Add(item.Libelle + " -> " + item.Pv);
+            }
+            return itemsHero;
+        }
+
+        /**
+         * Recupère les armes du Hero pour combat 
+         */
+        public static List<Weapon> GiveWeapHeroFight(List<string> menu, Hero hero)
+        {
+
+            List<ItemCtrl> items = GetItemToBuy(hero.Level);
+            List<Weapon> itemsHero = new List<Weapon>();
+            foreach (HeroWeapon weap in hero.HeroWeapons)
+            {
+                ItemCtrl item = items.Find(i => i.Id == weap.WeaponId);
+                using (RpgContext context = new RpgContext())
+                {
+                    Weapon weapon = context.WeaponSet.Where(i => i.Id == item.Id).First();
+                    itemsHero.Add(weapon);
+                }
+                menu.Add(item.Libelle + " -> " + item.Pv);
+            }
+            return itemsHero;
+        }
+
+        /**
          * Sauvegarde du héros en base
          */
         public static void SavePart(Hero hero, LevelStory story)

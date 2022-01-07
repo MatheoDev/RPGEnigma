@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using RPGDatabase.Models.Character;
 using RPGDatabase.Models.GamePart;
 using RPGEnigma.Game;
 using RPGEnigma.Menu;
@@ -100,6 +101,12 @@ namespace RPGEnigma.Utils
             Console.WriteLine("Force: {0}\nDextérité: {1}\nIntelligence: {2}\nDiscrétion: {3}\n",
                 GameHome.Hero.Power, GameHome.Hero.Dexterity,
                 GameHome.Hero.Intelligence, GameHome.Hero.Discretion);
+        }
+
+        public static void WriteInfosCombat(Monster monster, Hero hero)
+        {
+            Console.WriteLine("{0}: {1}/{2}      |       {3}: {4}/{5}\n",
+                hero.Name, hero.Pv, hero.PvMax, monster.Name, monster.Pv, monster.PvMax);
         }
     }
 }

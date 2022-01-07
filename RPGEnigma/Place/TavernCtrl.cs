@@ -47,8 +47,8 @@ namespace RPGEnigma.Place
             int action = ConsoleUtils.AskPlayerReturnInt("Que voulez vous faire ?", 0, 2);
             if (action == 0)
             {
-                GameHome.Party.Hero.Money = GameHome.Party.Hero.Money - 25;
-                GameHome.Party.Hero.Pv = GameHome.Party.Hero.PvMax;
+                GameHome.Hero.Money = GameHome.Party.Hero.Money - 25;
+                GameHome.Hero.Pv = GameHome.Hero.PvMax;
                 Console.Clear();
                 Console.WriteLine("Vous vous êtes reposé pour 25$\nAppuyez sur une touche pour continuer");
                 Console.Read();
