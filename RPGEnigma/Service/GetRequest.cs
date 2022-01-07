@@ -227,6 +227,9 @@ namespace RPGEnigma.Service
             return listItem;
         }
 
+        /**
+         * Recupère les items du Hero
+         */
         public static List<ItemCtrl> GiveItemsHero(List<string> menu, Hero hero)
         {
             List<ItemCtrl> items = GetItemToBuy(hero.Level);
