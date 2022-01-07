@@ -10,6 +10,9 @@ using RPGEnigma.Utils;
 
 namespace RPGEnigma.Place
 {
+    /**
+     * Classe simulant l'aventure (combat)
+     */
     public class AdventureCtrl : IMenuItem
     {
         public AdventureCtrl()
@@ -40,6 +43,9 @@ namespace RPGEnigma.Place
             }
         }
 
+        /**
+         * Deroulement du jeu
+         */
         public void Game()
         {
             bool isOver = false;
@@ -77,6 +83,9 @@ namespace RPGEnigma.Place
             }
         }
 
+        /**
+         * Determine quel type de monstre nous allons rencontrer pour ce round
+         */
         public void DefineMonsterToFight()
         {
             monsters = GetRequest.GetMonsters(GameHome.Party.Story);
@@ -94,6 +103,9 @@ namespace RPGEnigma.Place
             }
         }
 
+        /**
+         * Affecte les valeurs si win
+         */
         public void WinHeroChangeStat()
         {
             GameHome.Party.Story.Level = GameHome.Party.Story.Level + 1;
@@ -128,12 +140,18 @@ namespace RPGEnigma.Place
             }
         }
 
+        /**
+         * Action lorsque nous perdons le round
+         */
         public void LooseGameProcess()
         {
             NarationDialogue.LooseGame(GameHome.Hero.Name);
             RouteCtrl._home.InitItem();
         }
 
+        /**
+         * Action lorsque nous gagnons le round
+         */
         public void WinARound()
         {
             NarationDialogue.WinRound(GameHome.Hero.Name);
@@ -144,6 +162,9 @@ namespace RPGEnigma.Place
             RouteCtrl._home.InitItem();
         }
 
+        /**
+         * Message de fin quand on a fini le jeu
+         */
         public void TerminateGame()
         {
             NarationDialogue.TerminateTheGame(GameHome.Hero.Name);

@@ -88,6 +88,9 @@ namespace RPGEnigma.Place.Shop
             }
         }
 
+        /**
+         * Logique d'achat pour une arme
+         */
         private void ProcessBuyingWeapon(ItemCtrl item)
         {
             if (GameHome.Hero.HaveWeapon(item.Id))
@@ -100,6 +103,9 @@ namespace RPGEnigma.Place.Shop
             }
         }
 
+        /**
+         * Logique d'achat pour un equipement
+         */
         private void ProcessBuyingEquipt(ItemCtrl item)
         {
             if (GameHome.Hero.HaveEquipment(item.Id))
@@ -113,6 +119,9 @@ namespace RPGEnigma.Place.Shop
             }
         }
 
+        /**
+         * Logique d'achat pour un consommable
+         */
         private void ProcessBuyingConsom(ItemCtrl item)
         {
             if (GameHome.Hero.HaveConsommable(item.Id))

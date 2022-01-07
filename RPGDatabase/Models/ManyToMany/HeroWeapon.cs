@@ -4,6 +4,9 @@ using RPGDatabase.Models.Item;
 
 namespace RPGDatabase.Models.ManyToMany
 {
+    /**
+     * CLASSE MANY TO MANY BTW HERO & WEAPON
+     */
     public class HeroWeapon
     {
         public int Id { get; set; }

@@ -28,6 +28,9 @@ namespace RPGDatabase.Models.Character
             HeroWeapons = new List<HeroWeapon>();
         }
 
+        /**
+         * Methode verifiant s'il détient déjà l'item en question
+         */
         public bool HaveEquipment(int itemId)
         {
             foreach (HeroEquipment equipment in HeroEquipments)
@@ -41,6 +44,9 @@ namespace RPGDatabase.Models.Character
             return false;
         }
 
+        /**
+         * Methode verifiant s'il détient déjà l'item en question
+         */
         public bool HaveWeapon(int itemId)
         {
             foreach (HeroWeapon weapon in HeroWeapons)
@@ -54,6 +60,9 @@ namespace RPGDatabase.Models.Character
             return false;
         }
 
+        /**
+         * Methode verifiant s'il détient déjà l'item en question
+         */
         public bool HaveConsommable(int itemId)
         {
             foreach (HeroConsomable consomable in HeroConsomables)
@@ -66,40 +75,5 @@ namespace RPGDatabase.Models.Character
 
             return false;
         }
-
-        public void AddEquipment(HeroEquipment equipment)
-        {
-            HeroEquipments.Add(equipment);
-        }
-
-        public void AddConsomable(HeroConsomable consomable)
-        {
-            HeroConsomables.Add(consomable);
-        }
-
-        public void AddWeapon(HeroWeapon weapon)
-        {
-            HeroWeapons.Add(weapon);
-        }
-
-        //public void RemoveConsommable(ItemCtrl item)
-        //{
-        //    bool remove = false;
-        //    foreach (ItemCtrl loot in Consom)
-        //    {
-        //        if (loot.Libelle == item.Libelle)
-        //        {
-        //            if (loot.Quantity > 1)
-        //            {
-        //                item.Quantity = item.Quantity - 1;
-        //                remove = true;
-        //            }
-        //        }
-        //    }
-        //    if (!remove)
-        //    {
-        //        Loots.Remove(item);
-        //    }
-        //}
     }
 }

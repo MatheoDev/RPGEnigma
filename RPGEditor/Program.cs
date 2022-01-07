@@ -8,6 +8,9 @@ using RPGEditor.StaticListAdd;
 
 namespace RPGEditor
 {
+    /**
+     * Programme EDITOR important les datas necessaires pour faire tourner le jeux
+     */
     class Program
     {
         static void Main(string[] args)

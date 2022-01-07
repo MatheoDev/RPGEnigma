@@ -2,7 +2,7 @@
 namespace RPGDatabase.Models.Enum
 {
     /**
-     * Enum des types (personnage/loot)
+     * Enum des types (monstre/loot)
      */
     public enum TypeEnum
     {

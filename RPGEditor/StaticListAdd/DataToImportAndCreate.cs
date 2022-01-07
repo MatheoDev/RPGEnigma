@@ -6,6 +6,9 @@ using RPGDatabase.Models.Item;
 
 namespace RPGEditor.StaticListAdd
 {
+    /**
+     * Classe permettant de créer les datas que nous voulons importer
+     */
     public static class DataToImportAndCreate
     {
         public static List<Monster> CreateMonster()

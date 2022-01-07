@@ -14,14 +14,23 @@ namespace RPGDatabase
      */
     public class RpgContext : DbContext
     {
+        /**
+         * CONFIGURATION CONNEXION SQL
+         */
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectString = "server=localhost;port=3308;database=rpg_enigma;user=matheo;password=matheopass;";
             optionsBuilder.UseMySql(connectString, ServerVersion.AutoDetect(connectString));
         }
 
+        /**
+         * ----------------------------------
+         * REGLE DE RELATION ENTRE LES TABLES
+         * ----------------------------------
+         */
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // ONE TO ONE
             modelBuilder.Entity<Party>()
                 .HasOne(p => p.Hero)
                 .WithOne(h => h.Party)
@@ -32,6 +41,7 @@ namespace RPGDatabase
                 .WithOne(s => s.Party)
                 .HasForeignKey<LevelStory>(s => s.PartyId);
 
+            // MANY TO MANY
             modelBuilder.Entity<HeroWeapon>()
                 .HasOne(h => h.Hero)
                 .WithMany(hw => hw.HeroWeapons)
@@ -63,6 +73,11 @@ namespace RPGDatabase
                 .HasForeignKey(ei => ei.EquipmentId);
         }
 
+        /**
+         * ----------------------------------
+         * METHODES D'ACCES AUX TABLES BDD
+         * ----------------------------------
+         */
         public DbSet<Hero> HeroSet { get; set; }
 
         public DbSet<Monster> MonsterSet { get; set; }
