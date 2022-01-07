@@ -1,4 +1,5 @@
 ﻿using System;
+using RPGEnigma.Menu;
 
 namespace RPGEnigma
 {
@@ -6,7 +7,7 @@ namespace RPGEnigma
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            RouteCtrl._menuPrincipal.InitItem();
         }
     }
 }
